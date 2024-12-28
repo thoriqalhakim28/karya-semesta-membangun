@@ -1,14 +1,12 @@
 <div>
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <div class="flex flex-col items-center space-y-2">
-                <img src="{{ asset('images/logo.svg') }}" alt="logo" class="w-24 h-24">
-                <h1 class="text-2xl font-semibold leading-7">Masuk</h1>
-            </div>
+            <x-logo class="w-auto h-24 mx-auto" />
+            <h1 class="text-2xl font-semibold leading-7 text-center">Masuk</h1>
             <div class="mt-6">
                 <form wire:submit.prevent="authenticate">
                     <div>
-                        <x-label value="Email" />
+                        <x-label for="email" value="Email" />
                         <x-input wire:model.lazy="email" id="email" name="email" type="email" required
                             autofocus />
                         @error('email')
@@ -16,7 +14,7 @@
                         @enderror
                     </div>
                     <div class="mt-4">
-                        <x-label value="Kata sandi" />
+                        <x-label for="password" value="Kata sandi" />
                         <x-input wire:model.lazy="password" id="password" name="password" type="password" required
                             autofocus />
                         @error('password')
