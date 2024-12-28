@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Livewire\Admin\Dashboard;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Passwords\Confirm;
 use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
+use App\Livewire\User\Dashboard as UserDashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,4 +55,16 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::middleware('role:admin')->group(function () {
+        Route::prefix('admin')->group(function () {
+            Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
+        });
+    });
+
+    Route::middleware('role:user')->group(function () {
+        Route::get('/dashboard', UserDashboard::class)->name('user.dashboard');
+    });
 });

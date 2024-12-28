@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
-@section('content')
+@section('body')
 
     <style>
         @media(prefers-color-scheme: dark) {
