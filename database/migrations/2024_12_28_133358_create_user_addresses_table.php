@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->enum('type', ['asal', 'ktp', 'domisili'])->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
