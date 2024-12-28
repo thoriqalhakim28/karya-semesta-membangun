@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('transactionable_id');
+            $table->string('transactionable_type');
+            $table->date('transaction_date');
+            $table->enum('transaction_type', ['personal', 'loyalty'])->nullable();
+            $table->decimal('amount', 15, 2);
+            $table->string('payment_method');
             $table->timestamps();
+            $table->index(['transactionable_id', 'transactionable_type']);
         });
     }
 
