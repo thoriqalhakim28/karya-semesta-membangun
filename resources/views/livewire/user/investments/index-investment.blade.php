@@ -1,9 +1,9 @@
 <div>
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-2xl font-semibold leading-7">Beranda</h1>
+            <h1 class="text-2xl font-semibold leading-7">Investasi</h1>
             <p class="text-sm font-medium text-gray-600">
-                Lacak aktivitas dan perkembangan komunitas anda.
+                Daftar investasi yang tersedia untuk anda.
             </p>
         </div>
         <div>

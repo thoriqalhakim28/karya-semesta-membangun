@@ -7,10 +7,10 @@
                 <x-layouts.menu-admin />
             </x-layouts.sidebar>
         </div>
-        <div class="w-full lg:w-[82%] lg:border rounded-xl lg:my-4 lg:mx-4">
+        <div class="w-full lg:w-[82%] lg:border rounded-xl lg:m-4">
             <x-layouts.navbar />
 
-            <div class="lg:p-4">
+            <div class="p-4 lg:p-6">
                 @isset($slot)
                     {{ $slot }}
                 @endisset
