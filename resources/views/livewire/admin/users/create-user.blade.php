@@ -7,36 +7,37 @@
         <form wire:submit.prevent="submit">
             <div>
                 <x-label for="name" value="Nama lengkap" />
-                <x-input wire:model.lazy="name" id="name" name="name" type="text" required autofocus />
-                @error('name')
+                <x-input wire:model.lazy="form.name" id="name" name="name" type="text" required autofocus />
+                @error('form.name')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mt-4">
                 <x-label for="email" value="Email" />
-                <x-input wire:model.lazy="email" id="email" name="email" type="email" required />
-                @error('email')
+                <x-input wire:model.lazy="form.email" id="email" name="email" type="email" required />
+                @error('form.email')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mt-4">
                 <x-label for="phone_number" value="Nomor telepon" />
-                <x-input wire:model.lazy="phoneNumber" id="phone_number" name="phone_number" type="number" required />
-                @error('phoneNumber')
+                <x-input wire:model.lazy="form.phoneNumber" id="phone_number" name="phone_number" type="number"
+                    required />
+                @error('form.phoneNumber')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mt-4">
                 <x-label for="password" value="Kata sandi" />
-                <x-input wire:model.lazy="password" id="password" name="password" type="password" required />
-                @error('password')
+                <x-input wire:model.lazy="form.password" id="password" name="password" type="password" required />
+                @error('form.password')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mt-4">
                 <x-label for="password_confirmation" value="Konfirmasi kata sandi" />
-                <x-input wire:model.lazy="passwordConfirmation" id="password_confirmation" name="password_confirmation"
-                    type="password" required />
+                <x-input wire:model.lazy="form.passwordConfirmation" id="password_confirmation"
+                    name="password_confirmation" type="password" required />
             </div>
             <div class="flex justify-end mt-4">
                 <x-button class="w-full">
