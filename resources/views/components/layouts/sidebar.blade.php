@@ -21,9 +21,17 @@
             </div>
             <p class="text-sm font-medium leading-5">{{ Auth::user()->name }}</p>
         </div>
-        <x-button variant="ghost">
-            <x-icons.logout class="w-5 h-5 text-red-500" />
-        </x-button>
+        <div>
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                class="inline-flex items-center justify-center px-3 rounded-md hover:bg-accent h-9">
+                <x-icons.logout class="w-5 h-5 text-red-500" />
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
     </div>
 </div>
 

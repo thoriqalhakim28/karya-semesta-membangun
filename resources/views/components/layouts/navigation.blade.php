@@ -35,7 +35,7 @@
             @else
                 <a href="{{ route('login') }}"
                     class="inline-flex items-center px-3 text-sm font-medium rounded-md h-9 bg-primary text-primary-foreground hover:bg-primary/90">
-                    Login
+                    Masuk
                 </a>
             @endauth
         </div>
