@@ -1,6 +1,6 @@
 <div class="sticky top-0 z-50 flex flex-col justify-between h-screen py-4 pl-4">
-    <div class="space-y-6">
-        <div class="flex items-center gap-2">
+    <div class="space-y-6 ">
+        <div class="flex items-center h-16 gap-2 border-b">
             <div class="w-12 h-12 rounded-lg bg-gradient-to-tr from-blue-200 to-blue-600"></div>
             <div class="flex flex-col">
                 <p class="text-2xl font-semibold leading-5 font-myFont">Dashboard</p>

@@ -1,5 +1,5 @@
 <div>
-    <p class="text-sm font-medium text-gray-600">Main menu</p>
+    <p class="text-sm font-medium text-gray-600">Menu</p>
     <div class="mt-2 space-y-2">
         <x-side-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
             <x-icons.dashboard class="w-5 h-5" />
