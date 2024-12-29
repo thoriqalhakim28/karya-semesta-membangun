@@ -7,6 +7,7 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Investments\IndexInvestment;
 use App\Livewire\Admin\Programs\IndexProgram;
 use App\Livewire\Admin\Transactions\IndexTransaction;
+use App\Livewire\Admin\Users\CreateUser;
 use App\Livewire\Admin\Users\IndexUser;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Passwords\Confirm;
@@ -73,6 +74,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             Route::prefix('users')->group(function () {
                 Route::get('/', IndexUser::class)->name('admin.user.index');
+                Route::get('/create', CreateUser::class)->name('admin.user.create');
             });
 
             Route::prefix('programs')->group(function () {
