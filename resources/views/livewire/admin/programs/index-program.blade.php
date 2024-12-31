@@ -6,11 +6,9 @@
                 Daftar program yang tersedia di komunitas anda.
             </p>
         </div>
-        <div>
-            <x-link variant="button" :href="route('admin.program.create')" class="mt-4 lg:mt-0">
-                Tambah program
-            </x-link>
-        </div>
+        <x-link variant="button" :href="route('admin.program.create')" class="mt-4 lg:mt-0">
+            Tambah program
+        </x-link>
     </div>
     <div class="p-4 mt-4 border rounded-lg lg:mt-6 lg:p-6">
         <div class="items-center justify-between lg:flex">
