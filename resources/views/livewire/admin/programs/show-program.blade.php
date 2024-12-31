@@ -25,7 +25,7 @@
                 <div class="p-4 bg-gray-100 rounded-t-lg">
                     <h3 class="font-medium text-center">Target/orang</h3>
                 </div>
-                <p class="p-4 text-center">Rp1.000.000,00</p>
+                <p class="p-4 text-center">{{ 'Rp' . number_format($program->target, 2, ',', '.') }}</p>
             </div>
             <div class="w-full border divide-y divide-gray-200 rounded-lg">
                 <div class="p-4 bg-gray-100 rounded-t-lg">
