@@ -7,7 +7,6 @@
             </p>
         </div>
         <x-link variant="button" :href="route('admin.user.create')" class="mt-4 lg:mt-0">
-            <x-icons.add class="w-5 h-5 text-primary-foreground" />
             Tambah Pengguna
         </x-link>
     </div>
@@ -41,7 +40,7 @@
                                     {{ $item->email }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">25</td>
                                 <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
-                                    <x-link variant="ghost">
+                                    <x-link variant="ghost" :href="route('admin.user.show', $item->id)" wire:navigate>
                                         <x-icons.more class="w-5 h-5" />
                                     </x-link>
                                 </td>
