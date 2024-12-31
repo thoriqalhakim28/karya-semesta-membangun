@@ -5,7 +5,7 @@
             <p class="text-sm font-medium text-gray-600">{{ $program->description }}</p>
         </div>
         <div class="flex items-center gap-4 mt-4 lg:mt-0">
-            <x-link variant="button">
+            <x-link variant="button" href="{{ route('admin.program.edit', $program->id) }}">
                 Edit program
             </x-link>
             <x-button variant="destructive" x-on:click="confirm('Apakah anda yakin ingin menghapus program ini?')">
