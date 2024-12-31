@@ -11,6 +11,7 @@ use App\Livewire\Admin\Programs\EditProgram;
 use App\Livewire\Admin\Programs\IndexProgram;
 use App\Livewire\Admin\Programs\ShowProgram;
 use App\Livewire\Admin\Transactions\CreateTransaction;
+use App\Livewire\Admin\Transactions\EditTransaction;
 use App\Livewire\Admin\Transactions\IndexTransaction;
 use App\Livewire\Admin\Users\CreateUser;
 use App\Livewire\Admin\Users\IndexUser;
@@ -99,6 +100,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::prefix('transactions')->group(function () {
                 Route::get('/', IndexTransaction::class)->name('admin.transaction.index');
                 Route::get('/create', CreateTransaction::class)->name('admin.transaction.create');
+                Route::get('/{id}/edit', EditTransaction::class)->name('admin.transaction.edit');
             });
 
             Route::prefix('blogs')->group(function () {
