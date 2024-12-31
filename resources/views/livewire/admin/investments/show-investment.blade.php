@@ -5,10 +5,33 @@
             <p class="text-sm font-medium text-gray-600">Jenis investasi</p>
         </div>
         <div class="flex items-center gap-4 mt-4 lg:mt-0">
-            <x-button class="mt-4 lg:mt-0">
-                Edit jenis investasi
-            </x-button>
-            <x-button variant="destructive" x-on:click="confirm('Apakah anda yakin ingin menghapus program ini?')">
+            <div class="class="mt-4 lg:mt-0"">
+                <x-button x-data="" x-on:click="$dispatch('open-modal', 'edit-investment')">
+                    Edit jenis investasi
+                </x-button>
+                <x-modal name="edit-investment">
+                    <h1 class="text-2xl font-semibold">Edit Jenis Investasi</h1>
+                    <p class="text-sm font-medium text-gray-600">Masukan informasi jenis investasi untuk di rubah.</p>
+                    <div class="mt-4 lg:mt-6">
+                        <form wire:submit.prevent="submit">
+                            <div>
+                                <x-label for="name" value="Nama jenis investasi" />
+                                <x-input wire:model.blur="form.name" id="name" name="name" type="text"
+                                    required autofocus />
+                                @error('form.name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="flex justify-end mt-4">
+                                <x-button class="w-full">
+                                    Simpan
+                                </x-button>
+                            </div>
+                        </form>
+                    </div>
+                </x-modal>
+            </div>
+            <x-button variant="destructive" x-on:click="confirm('Apakah anda yakin ingin menghapus investasi ini?')">
                 Hapus jenis investasi
             </x-button>
         </div>
