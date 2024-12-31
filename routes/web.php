@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Livewire\Admin\Blogs\IndexBlog;
 use App\Livewire\Admin\Dashboard;
-use App\Livewire\Admin\Investments\CreateInvestment;
 use App\Livewire\Admin\Investments\IndexInvestment;
 use App\Livewire\Admin\Investments\ShowInvestment;
 use App\Livewire\Admin\Programs\CreateProgram;
@@ -93,7 +92,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             Route::prefix('investments')->group(function () {
                 Route::get('/', IndexInvestment::class)->name('admin.investment.index');
-                Route::get('/create', CreateInvestment::class)->name('admin.investment.create');
                 Route::get('/{id}', ShowInvestment::class)->name('admin.investment.show');
             });
 
