@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->string('category');
+            $table->string('thumbnail')->nullable();
             $table->string('content');
+            $table->enum('status', ['published', 'draft']);
             $table->timestamps();
         });
     }
