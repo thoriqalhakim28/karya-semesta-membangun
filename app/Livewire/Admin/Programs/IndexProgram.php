@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Programs;
 
+use App\Models\Program;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -10,6 +11,8 @@ class IndexProgram extends Component
 {
     public function render()
     {
-        return view('livewire.admin.programs.index-program');
+        return view('livewire.admin.programs.index-program')->with([
+            'programs' => Program::all()
+        ]);
     }
 }

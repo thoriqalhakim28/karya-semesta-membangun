@@ -17,14 +17,15 @@
             <x-input type="search" placeholder="Cari pengguna..." class="lg:w-96" />
         </div>
         <div class="grid gap-6 mt-4 lg:grid-cols-3 lg:mt-6">
-            @for ($i = 0; $i < 5; $i++)
-                <a class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md">
-                    <h2 class="font-medium leading-7">Nama program</h2>
-                    <p class="text-sm text-gray-600">Deskripsi</p>
+            @forelse ($programs as $item)
+                <a class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md"
+                    href="{{ route('admin.program.show', $item->id) }}">
+                    <h2 class="font-medium leading-7">{{ $item->name }}</h2>
+                    <p class="text-sm text-gray-600">{{ $item->description }}</p>
                     <div class="mt-4 space-y-1">
                         <div class="inline-flex items-center justify-between w-full">
                             <p class="text-sm font-medium">Target/orang</p>
-                            <p class="text-sm">Rp1.000.000,00</p>
+                            <p class="text-sm">{{ 'Rp' . number_format($item->target, 2, ',', '.') }}</p>
                         </div>
                         <div class="inline-flex items-center justify-between w-full">
                             <p class="text-sm font-medium">Terkumpul</p>
@@ -32,7 +33,9 @@
                         </div>
                     </div>
                 </a>
-            @endfor
+            @empty
+                <p class="text-sm text-gray-600">Tidak ada program</p>
+            @endforelse
         </div>
     </div>
 </div>

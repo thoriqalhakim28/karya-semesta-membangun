@@ -7,6 +7,7 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Investments\IndexInvestment;
 use App\Livewire\Admin\Programs\CreateProgram;
 use App\Livewire\Admin\Programs\IndexProgram;
+use App\Livewire\Admin\Programs\ShowProgram;
 use App\Livewire\Admin\Transactions\IndexTransaction;
 use App\Livewire\Admin\Users\CreateUser;
 use App\Livewire\Admin\Users\IndexUser;
@@ -83,6 +84,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::prefix('programs')->group(function () {
                 Route::get('/', IndexProgram::class)->name('admin.program.index');
                 Route::get('/create', CreateProgram::class)->name('admin.program.create');
+                Route::get('/{id}', ShowProgram::class)->name('admin.program.show');
             });
 
             Route::prefix('investments')->group(function () {
