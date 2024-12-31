@@ -8,6 +8,8 @@ use Livewire\Component;
 #[Layout('layouts.admin')]
 class CreateTransaction extends Component
 {
+    public $type = 'program';
+
     public function render()
     {
         return view('livewire.admin.transactions.create-transaction');
