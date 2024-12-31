@@ -15,6 +15,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
@@ -28,4 +29,7 @@
     @yield('body')
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
 </html>
+
