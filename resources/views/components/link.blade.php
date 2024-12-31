@@ -10,7 +10,7 @@
     ][$variant];
 @endphp
 
-<a {{ $attributes->merge(['class' => $variant]) }}>
+<a {{ $attributes->merge(['class' => ' ' . $variant]) }}>
     {{ $slot }}
 </a>
 
