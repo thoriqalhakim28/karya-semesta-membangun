@@ -8,12 +8,12 @@
         </div>
     </div>
     <div class="mt-4 lg:mt-6">
-        <form wire:submit.prevent="submit">
+        <form wire:submit.prevent="submit" enctype="multipart/form-data">
             <div class="grid grid-cols-3 gap-4">
                 <div>
                     <x-label for="thumbnail" value="Thumbnail" />
-                    <x-input wire:model.lazy="thumbnail" id="thumbnail" name="thumbnail" type="file" required />
-                    @error('thumbnail')
+                    <x-input wire:model.lazy="form.thumbnail" id="thumbnail" name="thumbnail" type="file" required />
+                    @error('form.thumbnail')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
@@ -36,9 +36,20 @@
                     </div>
                     <div class="mt-4">
                         <x-label for="content" value="Konten" />
-                        <div id="quill-editor" class="h-auto"></div>
-                        <textarea wire:model.lazy="content" rows="3" class="hidden" name="content" id="quill-editor-area"></textarea>
-                        @error('content')
+                        <div wire:ignore>
+                            <div x-data x-ref="editor" x-init="const quill = new Quill($refs.editor, {
+                                theme: 'snow'
+                            });
+                            quill.on('text-change', function() {
+                                @this.set('form.content', quill.root.innerHTML);
+                            });
+                            
+                            // Initialize content if exists
+                            if (@this.get('form.content')) {
+                                quill.root.innerHTML = @this.get('form.content');
+                            }">{!! $form->content !!}</div>
+                        </div>
+                        @error('body')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>

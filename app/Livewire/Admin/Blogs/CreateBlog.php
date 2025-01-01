@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Admin\Blogs;
 
+use App\Livewire\Forms\CreateBlogForm;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -12,8 +14,12 @@ class CreateBlog extends Component
 {
     use WithFileUploads;
 
-    #[Validate('image|max:1024')]
-    public $thumbnail;
+    public CreateBlogForm $form;
+
+    public function submit(): void
+    {
+        $this->form->save();
+    }
 
     public function render()
     {
