@@ -16,6 +16,11 @@
                     @error('form.thumbnail')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
+                    @if ($form->thumbnail)
+                        <div class="lg:mt-6 mt-4">
+                            <img src="{{ $form->thumbnail->temporaryUrl() }}" class="w-auto h-48">
+                        </div>
+                    @endif
                 </div>
                 <div class="col-span-2">
                     <div>
@@ -43,7 +48,7 @@
                             quill.on('text-change', function() {
                                 @this.set('form.content', quill.root.innerHTML);
                             });
-                            
+
                             // Initialize content if exists
                             if (@this.get('form.content')) {
                                 quill.root.innerHTML = @this.get('form.content');

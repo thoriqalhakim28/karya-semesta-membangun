@@ -4,10 +4,9 @@ namespace App\Livewire\Forms;
 
 use App\Models\Blog;
 use Livewire\Attributes\Validate;
-use Illuminate\Support\Str;
 use Livewire\Form;
 
-class CreateBlogForm extends Form
+class EditBlogForm extends Form
 {
     #[Validate]
     public $thumbnail;
@@ -23,7 +22,7 @@ class CreateBlogForm extends Form
     #[Validate]
     public $content = '';
 
-    protected function rules(): array
+    public function rules(): array
     {
         return [
             'thumbnail' => 'image|mimes:jpeg,png,jpg',
@@ -44,20 +43,14 @@ class CreateBlogForm extends Form
         ];
     }
 
-    public function save()
+    public function setBlogData(Blog $blog = null)
     {
-        $this->validate();
-
-        $slug = Str::slug($this->title);
-
-        $this->storedThumbnail = $this->thumbnail->store('thumbnails', 'public');
-
-        Blog::create([
-            'slug' => $slug,
-            'thumbnail' => $this->storedThumbnail,
-            'title' => $this->title,
-            'category' => $this->category,
-            'content' => $this->content,
-        ]);
+        if($blog) {
+            $this->thumbnail = $blog->thumbnail;
+            $this->storedThumbnail = $blog->thumbnail;
+            $this->title = $blog->title;
+            $this->category = $blog->category;
+            $this->content = $blog->content;
+        }
     }
 }

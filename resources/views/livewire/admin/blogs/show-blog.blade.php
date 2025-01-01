@@ -8,7 +8,7 @@
             </x-select>
         </div>
         <div class="flex items-center gap-4 mt-4 lg:mt-0">
-            <x-link variant="button" href="{{ route('admin.blog.edit', 1) }}">
+            <x-link variant="button" href="{{ route('admin.blog.edit', $blog->slug) }}">
                 Edit blog
             </x-link>
             <x-button variant="destructive" x-on:click="confirm('Apakah anda yakin ingin menghapus program ini?')">
@@ -16,9 +16,10 @@
             </x-button>
         </div>
     </div>
-    <div class="max-w-2xl mx-auto mt-4 lg:mt-6">
+    <div class="max-w-2xl mx-auto mt-4 space-y-4 lg:mt-6">
+        <img src="{{ Storage::url($blog->thumbnail) }}" alt="thumbnail">
         <h1 class="text-4xl font-bold capitalize">{{ $blog->title }}</h1>
-        <div class="mt-4 blog-content lg:mt-6">{!! $blog->content !!}</div>
+        <div class="blog-content">{!! $blog->content !!}</div>
     </div>
 </div>
 
