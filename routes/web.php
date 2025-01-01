@@ -110,7 +110,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/', IndexBlog::class)->name('admin.blog.index');
                 Route::get('/create', CreateBlog::class)->name('admin.blog.create');
                 Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
-                Route::get('/{id}/edit', EditBlog::class)->name('admin.blog.edit');
+                Route::get('/{slug}/edit', EditBlog::class)->name('admin.blog.edit');
             });
         });
     });

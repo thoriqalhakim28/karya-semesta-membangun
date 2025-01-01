@@ -20,7 +20,7 @@ class CreateBlog extends Component
     {
         $this->form->save();
 
-        $this->redirect(route('admin.blogs.index'), navigate: true);
+        $this->redirect(route('admin.blog.index'), navigate: true);
     }
 
     public function render()

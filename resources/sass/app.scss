@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+@import "./blog-content";
 @tailwind base;
 
 input:invalid,
@@ -70,4 +71,14 @@ select:invalid {
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
     }
+}
+
+.blog-content ol {
+    list-style-type: decimal;
+    padding-left: 2rem;
+}
+
+.blog-content ul {
+    list-style-type: disc;
+    padding-left: 2rem;
 }
