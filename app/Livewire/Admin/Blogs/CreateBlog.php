@@ -19,6 +19,8 @@ class CreateBlog extends Component
     public function submit(): void
     {
         $this->form->save();
+
+        $this->redirect(route('admin.blogs.index'), navigate: true);
     }
 
     public function render()

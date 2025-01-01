@@ -34,34 +34,20 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        @for ($i = 0; $i < 10; $i++)
+                        @forelse ($blogs as $item)
                             <tr>
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
                                     Gambar</td>
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                    Makan bersama</td>
+                                    {{ $item->title }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    Sosial</td>
+                                    {{ $item->category }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
                                     <span
-                                        class="inline-flex items-center h-6 px-3 text-xs font-medium text-blue-800 bg-blue-100 border border-blue-800 rounded-md">Published</span>
+                                        class="inline-flex items-center h-6 px-3 text-xs font-medium  border rounded-md capitalize {{ $item->status == 'published' ? 'bg-blue-100 text-blue-800 border-blue-800' : 'bg-green-100 text-green-800 border-green-800' }}">{{ $item->status }}</span>
                                 </td>
                                 <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
-                                    <x-link variant="ghost" wire:navigate>
-                                        <x-icons.more class="w-5 h-5" />
-                                    </x-link>
-                                </td>
-                            </tr>
-                        @endfor
-                        {{-- @forelse ($users as $item)
-                            <tr>
-                                <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                    {{ $item->name }}</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $item->email }}</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">25</td>
-                                <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
-                                    <x-link variant="ghost" :href="route('admin.user.show', $item->id)" wire:navigate>
+                                    <x-link variant="ghost" :href="route('admin.blog.show', $item->slug)" wire:navigate>
                                         <x-icons.more class="w-5 h-5" />
                                     </x-link>
                                 </td>
@@ -70,16 +56,16 @@
                             <tr>
                                 <td class="px-6 py-4 text-sm font-medium text-center text-gray-800 whitespace-nowrap"
                                     colspan="4">
-                                    Pengguna tidak ditemukan
+                                    Blog tidak ditemukan
                                 </td>
                             </tr>
-                        @endforelse --}}
+                        @endforelse
                     </tbody>
                 </table>
             </x-table>
-            {{-- <div class="mt-4 lg:mt-6">
-                {{ $users->links('pagination::tailwind') }}
-            </div> --}}
+            <div class="mt-4 lg:mt-6">
+                {{ $blogs->links('pagination::tailwind') }}
+            </div>
         </div>
     </div>
 </div>

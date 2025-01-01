@@ -109,7 +109,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::prefix('blogs')->group(function () {
                 Route::get('/', IndexBlog::class)->name('admin.blog.index');
                 Route::get('/create', CreateBlog::class)->name('admin.blog.create');
-                Route::get('/{id}', ShowBlog::class)->name('admin.blog.show');
+                Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
                 Route::get('/{id}/edit', EditBlog::class)->name('admin.blog.edit');
             });
         });
