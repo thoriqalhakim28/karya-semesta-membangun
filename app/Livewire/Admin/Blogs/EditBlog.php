@@ -24,9 +24,11 @@ class EditBlog extends Component
         $this->form->setBlogData($this->blog);
     }
 
-    public function removeUpload($field)
+    public function submit(): void
     {
-        $this->form->$field = null;
+        $this->form->save($this->blog->slug);
+
+        $this->redirect(route('admin.blog.show', $this->blog->slug), navigate: true);
     }
 
     public function render()

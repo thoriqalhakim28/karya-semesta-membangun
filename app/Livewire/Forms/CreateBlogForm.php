@@ -23,6 +23,9 @@ class CreateBlogForm extends Form
     #[Validate]
     public $content = '';
 
+    #[Validate]
+    public $status = 'draft';
+
     protected function rules(): array
     {
         return [
@@ -30,6 +33,7 @@ class CreateBlogForm extends Form
             'title' => 'required|string',
             'category' => 'required|string',
             'content' => 'required|string',
+            'status' => 'required|in:published,draft'
         ];
     }
 
@@ -41,6 +45,7 @@ class CreateBlogForm extends Form
             'title.required' => 'Judul harus diisi.',
             'category.required' => 'Kategori harus diisi.',
             'content.required' => 'Konten harus diisi.',
+            'status.required' => 'Status harus diisi.',
         ];
     }
 
@@ -58,6 +63,7 @@ class CreateBlogForm extends Form
             'title' => $this->title,
             'category' => $this->category,
             'content' => $this->content,
+            'status' => $this->status
         ]);
     }
 }

@@ -11,16 +11,26 @@
         <form wire:submit.prevent="submit" enctype="multipart/form-data">
             <div class="grid grid-cols-3 gap-4">
                 <div>
-                    <x-label for="thumbnail" value="Thumbnail" />
-                    <x-input wire:model.lazy="form.thumbnail" id="thumbnail" name="thumbnail" type="file" required />
-                    @error('form.thumbnail')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    @if ($form->thumbnail)
-                        <div class="lg:mt-6 mt-4">
-                            <img src="{{ $form->thumbnail->temporaryUrl() }}" class="w-auto h-48">
-                        </div>
-                    @endif
+                    <div>
+                        <x-label for="status" value="Status" />
+                        <x-select wire:model.lazy="form.status" id="status" name="status" required>
+                            <option value="draft" selected>Draft</option>
+                            <option value="published">Published</option>
+                        </x-select>
+                    </div>
+                    <div class="mt-4">
+                        <x-label for="thumbnail" value="Thumbnail" />
+                        <x-input wire:model.lazy="form.thumbnail" id="thumbnail" name="thumbnail" type="file"
+                            required />
+                        @error('form.thumbnail')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                        @if ($form->thumbnail)
+                            <div class="mt-4 lg:mt-6">
+                                <img src="{{ $form->thumbnail->temporaryUrl() }}" class="w-auto h-48">
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="col-span-2">
                     <div>

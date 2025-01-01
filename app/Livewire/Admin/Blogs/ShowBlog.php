@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Blogs;
 
 use App\Models\Blog;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -15,6 +16,13 @@ class ShowBlog extends Component
     public function mount($slug)
     {
         $this->blog = Blog::where('slug', $slug)->first();
+    }
+
+    public function delete(Blog $blog)
+    {
+        $blog->delete();
+
+        $this->redirect(route('admin.blog.index'), navigate: true);
     }
 
     public function render()

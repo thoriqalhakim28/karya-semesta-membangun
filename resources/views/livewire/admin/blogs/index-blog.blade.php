@@ -22,8 +22,6 @@
                     <thead class="bg-gray-100">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
-                                Thumbnail</th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                                 Judul</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                                 Kategori</th>
@@ -36,8 +34,6 @@
                     <tbody class="divide-y divide-gray-200">
                         @forelse ($blogs as $item)
                             <tr>
-                                <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                    Gambar</td>
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
                                     {{ $item->title }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
