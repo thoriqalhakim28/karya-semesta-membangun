@@ -16,13 +16,9 @@
     </div>
     <p class="mt-6 text-sm font-medium text-gray-600">Lainnya</p>
     <div class="mt-2 space-y-2">
-        <x-side-link :href="route('user.account-settings')" :active="request()->routeIs('user.account-settings')">
+        <x-side-link :href="route('user.profile')" :active="request()->routeIs(['user.profile', 'user.account-settings'])">
             <x-icons.settings class="w-5 h-5" />
-            Pengaturan Akun
-        </x-side-link>
-        <x-side-link :href="route('user.profile')" :active="request()->routeIs('user.profile')">
-            <x-icons.user class="w-5 h-5" />
-            Profile
+            Pengaturan
         </x-side-link>
     </div>
 </div>

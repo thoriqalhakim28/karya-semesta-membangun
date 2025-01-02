@@ -5,7 +5,7 @@ namespace App\Livewire\User\Profile;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts.user')]
+#[Layout('layouts.profile')]
 class AccountSetting extends Component
 {
     public function render()

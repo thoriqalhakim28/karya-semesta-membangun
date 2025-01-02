@@ -14,6 +14,8 @@
                 @isset($slot)
                     {{ $slot }}
                 @endisset
+
+                @yield('profile')
             </div>
         </div>
     </div>
