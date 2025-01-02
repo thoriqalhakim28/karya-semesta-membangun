@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-50 flex items-center justify-between h-16 px-4 lg:px-0">
+<div class="sticky top-0 z-50 flex items-center justify-between h-16 px-4 bg-white lg:px-0">
     <a href="/">
         <x-logo class="w-auto mx-auto h-14" />
     </a>
@@ -13,8 +13,9 @@
         <a href="/" class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
             Kontak
         </a>
-        <a href="/" class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
-            Blog
+        <a href="{{ route('blog.index') }}"
+            class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground" wire:navigate>
+            Blogs
         </a>
     </div>
 

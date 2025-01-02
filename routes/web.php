@@ -25,6 +25,7 @@ use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
+use App\Livewire\BlogIndex;
 use App\Livewire\User\Dashboard as UserDashboard;
 use App\Livewire\User\Investments\IndexInvestment as UserIndexInvestment;
 use App\Livewire\User\Profile\AccountSetting;
@@ -129,4 +130,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/profile', IndexProfile::class)->name('user.profile');
         Route::get('/account-settings', AccountSetting::class)->name('user.account-settings');
     });
+});
+
+Route::prefix('blogs')->group(function () {
+    Route::get('/', BlogIndex::class)->name('blog.index');
 });
