@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\Investments;
 
+use App\Models\Investment;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -10,6 +11,8 @@ class IndexInvestment extends Component
 {
     public function render()
     {
-        return view('livewire.user.investments.index-investment');
+        return view('livewire.user.investments.index-investment')->with([
+            'investments' => Investment::all()
+        ]);
     }
 }
