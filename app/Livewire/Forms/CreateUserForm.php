@@ -69,6 +69,8 @@ class CreateUserForm extends Form
 
             $user->detail()->create();
 
+            $user->assignRole('user');
+
             DB::commit();
         } catch (\Throwable $th) {
             report($th);

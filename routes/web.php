@@ -31,6 +31,7 @@ use App\Livewire\User\Investments\IndexInvestment as UserIndexInvestment;
 use App\Livewire\User\Profile\AccountSetting;
 use App\Livewire\User\Profile\IndexProfile;
 use App\Livewire\User\Programs\IndexProgram as UserIndexProgram;
+use App\Livewire\User\Programs\ShowProgram as UserShowProgram;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -121,6 +122,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::prefix('programs')->group(function () {
             Route::get('/', UserIndexProgram::class)->name('user.program.index');
+            Route::get('/{id}', UserShowProgram::class)->name('user.program.show');
         });
 
         Route::prefix('investments')->group(function () {
