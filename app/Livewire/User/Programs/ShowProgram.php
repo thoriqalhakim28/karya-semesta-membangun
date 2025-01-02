@@ -20,18 +20,14 @@ class ShowProgram extends Component
     {
         $this->program = Program::with('users')->findOrFail($id);
 
-        $userId = Auth::user()->id;
-
-        $this->isFollowed = $this->program->users->contains($userId);
+        $this->isFollowed = $this->program->users->contains(Auth::user()->id);
     }
 
-    public function follow()
+    public function follow($id)
     {
-        $userId = Auth::user()->id;
-
         UserProgram::create([
-            'user_id' => $userId,
-            'program_id' => $this->program->id
+            'user_id' =>  Auth::user()->id,
+            'program_id' => $id
         ]);
 
         $this->isFollowed = true;

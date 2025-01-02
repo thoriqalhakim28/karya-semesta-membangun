@@ -17,7 +17,7 @@
     <div class="mt-4 lg:mt-6">
         <div class="grid gap-6 mt-4 lg:grid-cols-4 lg:mt-6">
             @forelse ($investments as $item)
-                <a href="{{ route('user.program.show', $item->id) }}"
+                <a href="{{ route('user.investment.show', $item->id) }}"
                     class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md">
                     <h2 class="font-medium leading-7">{{ $item->name }}</h2>
                 </a>

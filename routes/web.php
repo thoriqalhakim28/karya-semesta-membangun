@@ -28,6 +28,7 @@ use App\Livewire\Auth\Verify;
 use App\Livewire\BlogIndex;
 use App\Livewire\User\Dashboard as UserDashboard;
 use App\Livewire\User\Investments\IndexInvestment as UserIndexInvestment;
+use App\Livewire\User\Investments\ShowInvestment as UserShowInvestment;
 use App\Livewire\User\Profile\AccountSetting;
 use App\Livewire\User\Profile\IndexProfile;
 use App\Livewire\User\Programs\IndexProgram as UserIndexProgram;
@@ -127,6 +128,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::prefix('investments')->group(function () {
             Route::get('/', UserIndexInvestment::class)->name('user.investment.index');
+            Route::get('/{id}', UserShowInvestment::class)->name('user.investment.show');
         });
 
         Route::get('/profile', IndexProfile::class)->name('user.profile');
