@@ -5,6 +5,7 @@ namespace App\Livewire\User\Profile;
 use App\Livewire\Forms\EditUserAddressForm;
 use App\Livewire\Forms\EditUserContactForm;
 use App\Livewire\Forms\EditUserDetailForm;
+use App\Livewire\Forms\EditUserFamilyForm;
 use App\Livewire\Forms\EditUserProfileForm;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class IndexProfile extends Component
     public EditUserDetailForm $detail;
     public EditUserContactForm $contact;
     public EditUserAddressForm $address;
+    public EditUserFamilyForm $family;
 
     public $user;
 
@@ -29,6 +31,7 @@ class IndexProfile extends Component
         $this->detail->setDetailData($this->user->detail);
         $this->contact->setDetailData($this->user->contact);
         $this->address->setDetailData($this->user->address);
+        $this->family->setDetailData($this->user->family);
     }
 
     public function submitUser(): void
@@ -57,6 +60,13 @@ class IndexProfile extends Component
         $this->address->save($this->user->id);
 
         $this->dispatch('close-modal', 'edit-address');
+    }
+
+    public function submitFamily(): void
+    {
+        $this->family->save($this->user->id);
+
+        $this->dispatch('close-modal', 'edit-family');
     }
 
     public function render()

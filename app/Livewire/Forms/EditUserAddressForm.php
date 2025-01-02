@@ -3,7 +3,6 @@
 namespace App\Livewire\Forms;
 
 use App\Models\UserAddress;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -28,7 +27,7 @@ class EditUserAddressForm extends Form
     {
         $this->validate();
 
-        $address = UserAddress::updateOrCreate([
+        UserAddress::updateOrCreate([
             'user_id' => $id
         ], [
             'type' => $this->type,
