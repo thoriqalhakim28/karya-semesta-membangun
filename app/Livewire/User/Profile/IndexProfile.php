@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\Profile;
 
+use App\Livewire\Forms\EditUserContactForm;
 use App\Livewire\Forms\EditUserDetailForm;
 use App\Livewire\Forms\EditUserProfileForm;
 use App\Models\User;
@@ -14,6 +15,7 @@ class IndexProfile extends Component
 {
     public EditUserProfileForm $form;
     public EditUserDetailForm $detail;
+    public EditUserContactForm $contact;
 
     public $user;
 
@@ -23,6 +25,7 @@ class IndexProfile extends Component
 
         $this->form->setUserData($this->user);
         $this->detail->setDetailData($this->user->detail);
+        $this->contact->setDetailData($this->user->contact);
     }
 
     public function submitUser(): void
@@ -37,6 +40,13 @@ class IndexProfile extends Component
         $this->detail->save($this->user->id);
 
         $this->dispatch('close-modal', 'edit-detail');
+    }
+
+    public function submitContact(): void
+    {
+        $this->contact->save($this->user->id);
+
+        $this->dispatch('close-modal', 'edit-contact');
     }
 
     public function render()
