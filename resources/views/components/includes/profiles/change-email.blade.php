@@ -1,8 +1,8 @@
 <div class="p-4 border rounded-lg lg:p-6">
     <h3 class="text-lg font-semibold">Email</h3>
-    @if (session()->has('message'))
+    @if (session()->has('messageEmail'))
         <div class="mt-2 text-sm text-green-600">
-            {{ session('message') }}
+            {{ session('messageEmail') }}
         </div>
     @endif
     <div class="mt-2">
@@ -27,11 +27,11 @@
     <form wire:submit.prevent="updateEmail" class="p-6">
         <h2 class="text-lg font-semibold">Konfirmasi perubahan email</h2>
         <p class="text-sm text-gray-600">
-            Masukkan password Anda untuk mengonfirmasi perubahan email.
+            Masukkan kata sandi Anda untuk mengonfirmasi perubahan email.
         </p>
 
         <div class="mt-4">
-            <x-label for="password" value="Password" />
+            <x-label for="password" value="Kata sandi" />
             <x-input wire:model="form.password" id="password" type="password" name="password"
                 autocomplete="current-password" />
             @error('form.password')

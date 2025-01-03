@@ -3,7 +3,7 @@
 namespace App\Livewire\User\Profile;
 
 use App\Livewire\Forms\ChangeEmailForm;
-use App\Models\User;
+use App\Livewire\Forms\ChangePasswordForm;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -12,6 +12,7 @@ use Livewire\Component;
 class AccountSetting extends Component
 {
     public ChangeEmailForm $form;
+    public ChangePasswordForm $passwordForm;
 
     public bool $hasChanges = false;
 
@@ -38,7 +39,17 @@ class AccountSetting extends Component
         $this->form->password = '';
 
         $this->dispatch('close-modal', 'update-email');
-        session()->flash('message', 'Email berhasil diubah');
+        session()->flash('messageEmail', 'Email berhasil diubah');
+    }
+
+    public function updatePassword(): void
+    {
+        $this->passwordForm->save(Auth::user()->id);
+
+        $this->reset('passwordForm');
+
+        $this->dispatch('close-modal', 'update-password');
+        session()->flash('messagePassword', 'Password berhasil diubah');
     }
 
     public function render()
