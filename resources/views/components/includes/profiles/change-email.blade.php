@@ -7,16 +7,18 @@
     @endif
     <div class="mt-2">
         <form wire:submit.prevent="updateEmail">
-            <div class="flex items-center gap-4">
-                <div class="w-1/2">
+            <div class="items-center gap-4 lg:flex">
+                <div class="lg:w-1/2">
                     <x-input wire:model.live="form.email" id="email" type="email" name="email" />
                     @error('form.email')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
                 @if ($hasChanges)
+                <div class="mt-4 lg:mt-0">
                     <x-button type="button" x-data=""
-                        x-on:click="$dispatch('open-modal', 'update-email')">Simpan perubahan</x-button>
+                    x-on:click="$dispatch('open-modal', 'update-email')">Simpan perubahan</x-button>
+                </div>
                 @endif
             </div>
         </form>
