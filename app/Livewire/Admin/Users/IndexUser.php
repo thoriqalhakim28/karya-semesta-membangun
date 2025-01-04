@@ -15,7 +15,7 @@ class IndexUser extends Component
     public function render()
     {
         return view('livewire.admin.users.index-user')->with([
-            'users' => User::paginate(10),
+            'users' => User::with(['contact'])->paginate(10),
         ]);
     }
 }

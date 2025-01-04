@@ -38,7 +38,8 @@
                                     {{ $item->name }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
                                     {{ $item->email }}</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">25</td>
+                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
+                                    {{ $item->contact->phone_number ?? '-' }}</td>
                                 <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
                                     <x-link variant="ghost" :href="route('admin.user.show', $item->id)" wire:navigate>
                                         <x-icons.more class="w-5 h-5" />
