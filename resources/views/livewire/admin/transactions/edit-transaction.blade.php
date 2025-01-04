@@ -4,6 +4,7 @@
         Masukan informasi transaksi yang akan di rubah.
     </p>
     <div class="w-full mx-auto mt-6 lg:w-1/2">
+        @dump($form)
         <form wire:submit.prevent="submit">
             <div class="grid grid-cols-2 gap-4 lg:gap-6">
                 <label for="program" class="flex w-full p-3 text-sm bg-white border border-gray-200 rounded-lg">
@@ -25,19 +26,25 @@
                 @enderror
             </div>
             <div class="mt-4">
-                <x-label for="name" value="Nama pengguna" />
-                <x-select wire:model.lazy="form.name" id="name" name="name" required>
+                <x-label for="user" value="Nama pengguna" />
+                <x-select wire:model.lazy="form.user" id="user" name="user" required>
                     <option value="" selected>Pilih pengguna</option>
+                    @foreach ($users as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
                 </x-select>
-                @error('form.name')
+                @error('form.user')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
-            @if ($type == 'program')
+            @if ($type == 'program' && count($programs) > 0)
                 <div class="mt-4">
                     <x-label for="program" value="Program" />
                     <x-select wire:model.lazy="form.program" id="program" name="program" required>
                         <option value="" selected>Pilih program</option>
+                        @foreach ($programs as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
                     </x-select>
                     @error('form.program')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -56,7 +63,7 @@
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
-            @elseif ($type == 'investasi')
+            @elseif ($type == 'investasi' && count($investments) > 0)
                 <div class="mt-4">
                     <x-label for="investment" value="Jenis Investasi" />
                     <x-select wire:model.lazy="form.investment" id="investment" name="investment" required>
@@ -67,20 +74,22 @@
                     @enderror
                 </div>
             @endif
-            <div class="mt-4">
-                <x-label for="amount" value="Jumlah" />
-                <x-input wire:model.lazy="form.amount" id="amount" name="amount" type="number" required />
-                @error('form.amount')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="mt-4">
-                <x-label for="payment" value="Metode pembayaran" />
-                <x-input wire:model.lazy="form.paymentMethod" id="payment" name="payment" type="text" required />
-                @error('form.paymentMethod')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
+            @if (isset($form->investment) || isset($form->program))
+                <div class="mt-4">
+                    <x-label for="amount" value="Jumlah" />
+                    <x-input wire:model.lazy="form.amount" id="amount" name="amount" type="number" required />
+                    @error('form.amount')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mt-4">
+                    <x-label for="payment" value="Metode pembayaran" />
+                    <x-input wire:model.lazy="form.payment" id="payment" name="payment" type="text" required />
+                    @error('form.payment')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+            @endif
             <div class="flex justify-end mt-4">
                 <x-button class="w-full">
                     Simpan
