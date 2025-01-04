@@ -61,7 +61,8 @@
                                     <x-link variant="ghost" :href="route('admin.transaction.edit', $item->id)" wire:navigate>
                                         <x-icons.edit class="w-5 h-5 text-green-600" />
                                     </x-link>
-                                    <x-button variant="ghost">
+                                    <x-button variant="ghost" wire:click="delete({{ $item->id }})"
+                                        wire:confirm="Apakah anda yakin ingin menghapus transaksi ini?">
                                         <x-icons.delete class="w-5 h-5 text-red-600" />
                                     </x-button>
                                 </td>
@@ -69,7 +70,7 @@
                         @empty
                             <tr>
                                 <td class="px-6 py-4 text-sm font-medium text-center text-gray-800 whitespace-nowrap"
-                                    colspan="4">
+                                    colspan="6">
                                     Transaksi tidak ditemukan
                                 </td>
                             </tr>

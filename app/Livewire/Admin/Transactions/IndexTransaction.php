@@ -28,6 +28,11 @@ class IndexTransaction extends Component
         $this->dispatch('close-modal', 'detail-transaction');
     }
 
+    public function delete(Transaction $transaction)
+    {
+        $transaction->delete();
+    }
+
     public function render()
     {
         return view('livewire.admin.transactions.index-transaction')->with([
