@@ -26,6 +26,8 @@
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                                 Nama</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
+                                Nama Transaksi</th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                                 Jenis Transaksi</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                                 Jumlah</th>
@@ -34,44 +36,34 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        @for ($i = 0; $i < 10; $i++)
+                        @forelse ($transactions as $item)
                             <tr>
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                    27 Desember 2024</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    Thoriq Al Hakim</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    Program - Loyalty
+                                    {{ Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
                                 </td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ 'Rp' . number_format(1000000, 0, ',', '.') }}
+                                    {{ $item->user->name }}</td>
+                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
+                                    {{ class_basename($item->transactionable_type) }}</td>
+                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
+                                    <span>{{ $item->transactionable->name }}</span>
+                                    @if ($item->transactionable_type == 'App\Models\Program')
+                                        - <span class="capitalize">{{ $item->transaction_type }}</span>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
+                                    {{ 'Rp' . number_format($item->amount, 0, ',', '.') }}
                                 </td>
                                 <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
-                                    <x-link variant="ghost" :href="route('admin.transaction.edit', $i)" wire:navigate>
+                                    <x-button variant="ghost" wire:click="showTransactionDetail({{ $item->id }})">
+                                        <x-icons.view class="w-5 h-5 text-gray-600" />
+                                    </x-button>
+                                    <x-link variant="ghost" :href="route('admin.transaction.edit', $item->id)" wire:navigate>
                                         <x-icons.edit class="w-5 h-5 text-green-600" />
                                     </x-link>
                                     <x-button variant="ghost">
                                         <x-icons.delete class="w-5 h-5 text-red-600" />
                                     </x-button>
-                                </td>
-                            </tr>
-                        @endfor
-                        {{-- @forelse ($users as $item)
-                            <tr>
-                                <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                    27 Desember 2024</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    Thoriq Al Hakim</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    Program - Loyalty
-                                </td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ 'Rp' . number_format(1000000, 0, ',', '.') }}
-                                </td>
-                                <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
-                                    <x-link variant="ghost" :href="route('admin.transaction.show', $i)" wire:navigate>
-                                        <x-icons.more class="w-5 h-5" />
-                                    </x-link>
                                 </td>
                             </tr>
                         @empty
@@ -81,14 +73,65 @@
                                     Transaksi tidak ditemukan
                                 </td>
                             </tr>
-                        @endforelse --}}
+                        @endforelse
                     </tbody>
                 </table>
             </x-table>
-            {{-- <div class="mt-4 lg:mt-6">
-                {{ $users->links('pagination::tailwind') }}
-            </div> --}}
+            <div class="mt-4 lg:mt-6">
+                {{ $transactions->links('pagination::tailwind') }}
+            </div>
         </div>
     </div>
+    <x-modal name="detail-transaction" focusable>
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-medium">Detail Transaksi</h2>
+            <x-button variant="ghost" wire:click="resetTransactionDetail">
+                <x-icons.cancel class="w-5 h-5" />
+            </x-button>
+        </div>
+        @if ($selectedTransaction)
+            <div class="grid gap-6 mt-6 lg:grid-cols-2">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Tanggal</p>
+                    <p class="text-sm text-gray-800">
+                        {{ Carbon\Carbon::parse($selectedTransaction->created_at)->locale('id')->translatedFormat('d F Y') }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Nama Pengguna</p>
+                    <p class="text-sm text-gray-800">
+                        {{ $selectedTransaction->user->name }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Nama Transaksi</p>
+                    <p class="text-sm text-gray-800">
+                        {{ class_basename($selectedTransaction->transactionable_type) }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Jenis Transaksi</p>
+                    <p class="text-sm text-gray-800">
+                        <span>{{ $item->transactionable->name }}</span>
+                        @if ($item->transactionable_type == 'App\Models\Program')
+                            - <span class="capitalize">{{ $item->transaction_type }}</span>
+                        @endif
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Jumlah</p>
+                    <p class="text-sm text-gray-800">
+                        {{ 'Rp' . number_format($selectedTransaction->amount, 0, ',', '.') }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Methode Pembayaran</p>
+                    <p class="text-sm text-gray-800">
+                        {{ $selectedTransaction->payment_method }}
+                    </p>
+                </div>
+            </div>
+        @endif
+    </x-modal>
 </div>
 

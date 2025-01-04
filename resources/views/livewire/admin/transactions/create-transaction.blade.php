@@ -3,7 +3,6 @@
     <p class="text-sm font-medium text-gray-600">
         Masukan informasi transaksi baru.
     </p>
-    @dump($form)
     <div class="w-full mx-auto mt-6 lg:w-1/2">
         <form wire:submit.prevent="submit">
             <div class="grid grid-cols-2 gap-4 lg:gap-6">
