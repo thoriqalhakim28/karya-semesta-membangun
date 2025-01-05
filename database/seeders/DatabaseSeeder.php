@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
 
             $this->call(RolePermissionSeeder::class);
             $this->call(UserSeeder::class);
-            
+            $this->call(ProgramInvestmentSeeder::class);
+
             DB::commit();
         } catch (\Throwable $th) {
             throw $th;
