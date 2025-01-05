@@ -13,7 +13,7 @@ class ShowUser extends Component
 
     public function mount($id)
     {
-        $this->user = User::with(['detail', 'contact', 'address', 'family'])->findOrFail($id);
+        $this->user = User::with(['detail', 'contact', 'address', 'family', 'programs', 'investments'])->findOrFail($id);
     }
 
     public function render()

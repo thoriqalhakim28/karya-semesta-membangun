@@ -6,9 +6,21 @@
                 Anggota komunitas
             </p>
         </div>
-        <x-button variant="destructive" x-on:click="confirm('Apakah anda yakin ingin menghapus pengguna ini?')">
+        <x-button class="mt-4 lg:mt-0" variant="destructive"
+            x-on:click="confirm('Apakah anda yakin ingin menghapus pengguna ini?')">
             Hapus pengguna
         </x-button>
+    </div>
+    <div class="mt-4 lg:mt-6">
+        <div class="grid gap-6 lg:grid-cols-3">
+            <div>
+                <x-includes.users.user-information :user="$user" />
+            </div>
+            <div class="space-y-6 lg:col-span-2">
+                <x-includes.users.program :user="$user" />
+                <x-includes.users.investment :user="$user" />
+            </div>
+        </div>
     </div>
 </div>
 
