@@ -13,7 +13,8 @@
     <div class="p-4 mt-6 border rounded-lg lg:p-6">
         <div class="items-center justify-between lg:flex">
             <div class="relative">
-                <x-input type="search" placeholder="Cari pengguna..." class="lg:w-96" />
+                <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari pengguna..."
+                    class="lg:w-96" />
             </div>
         </div>
         <div class="mt-4 lg:mt-6">
