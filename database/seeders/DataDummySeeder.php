@@ -2,13 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Investment;
-use App\Models\Program;
-use App\Models\Transaction;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Program;
+use App\Models\Investment;
+use App\Models\UserDetail;
+use App\Models\UserFamily;
+use App\Models\Transaction;
+use App\Models\UserAddress;
+use App\Models\UserContact;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DataDummySeeder extends Seeder
 {
@@ -27,6 +31,22 @@ class DataDummySeeder extends Seeder
             $users = User::all();
 
             foreach ($users as $user) {
+                UserDetail::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+
+                UserFamily::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+
+                UserAddress::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+
+                UserContact::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+
                 $randomPrograms = Program::inRandomOrder()->take(fake()->numberBetween(1, 5))->get();
 
                 $user->programs()->attach($randomPrograms->pluck('id')->toArray(), [

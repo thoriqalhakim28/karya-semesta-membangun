@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Dflydev\DotAccessData\Data;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,7 @@ class DatabaseSeeder extends Seeder
         try {
             DB::beginTransaction();
 
-            $this->call(RolePermissionSeeder::class);
-            $this->call(UserSeeder::class);
-            $this->call(ProgramInvestmentSeeder::class);
+            $this->call(DataDummySeeder::class);
 
             DB::commit();
         } catch (\Throwable $th) {
