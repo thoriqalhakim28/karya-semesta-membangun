@@ -13,11 +13,11 @@ trait HasTransactions
 
     public function createTransaction(array $attributes)
     {
-        return $this->transaction()->create($attributes);
+        return $this->transactions()->create($attributes);
     }
 
     public function totalTransactionAmount()
     {
-        return $this->transaction()->sum('amount');
+        return $this->transactions()->sum('amount');
     }
 }

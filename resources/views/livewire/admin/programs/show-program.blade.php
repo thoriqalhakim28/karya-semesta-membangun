@@ -19,7 +19,7 @@
                 <div class="p-4 bg-gray-100 rounded-t-lg">
                     <h3 class="font-medium text-center">Total pengguna</h3>
                 </div>
-                <p class="p-4 text-center">1</p>
+                <p class="p-4 text-center">{{ count($program->users) }}</p>
             </div>
             <div class="w-full border divide-y divide-gray-200 rounded-lg">
                 <div class="p-4 bg-gray-100 rounded-t-lg">
@@ -31,7 +31,7 @@
                 <div class="p-4 bg-gray-100 rounded-t-lg">
                     <h3 class="font-medium text-center">Terkumpul</h3>
                 </div>
-                <p class="p-4 text-center">Rp1.000.000.000,00</p>
+                <p class="p-4 text-center">{{ 'Rp' . number_format($totalAmount, 2, ',', '.') }}</p>
             </div>
         </div>
     </div>
@@ -53,26 +53,33 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        {{-- @forelse ($users as $item) --}}
-                        <tr>
-                            <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                27 Des</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                Thoriq Al Hakim</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">Loyalty</td>
-                            <td class="px-6 py-2 text-sm text-gray-800 text-end whitespace-nowrap">Rp1.000.000,00</td>
-                        </tr>
-                        {{-- @empty
-                            <tr>
-                                <td class="px-6 py-4 text-sm font-medium text-center text-gray-800 whitespace-nowrap"
-                                    colspan="4">
-                                    Pengguna tidak ditemukan
+                        @forelse ($transactions as $item)
+                            <tr wire:key="transaction-{{ $item->id }}">
+                                <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                    {{ Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
+                                </td>
+                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
+                                    {{ $item->user->name }}</td>
+                                <td class="px-6 py-2 text-sm text-gray-800 capitalize whitespace-nowrap">
+                                    {{ $item->transaction_type }}</td>
+                                <td class="px-6 py-2 text-sm text-gray-800 text-end whitespace-nowrap">
+                                    {{ 'Rp' . number_format($item->amount, 0, ',', '.') }}
                                 </td>
                             </tr>
-                        @endforelse --}}
+                        @empty
+                            <tr>
+                                <td colspan="4"
+                                    class="px-6 py-4 text-sm font-medium text-center text-gray-800 whitespace-nowrap">
+                                    Transaksi tidak ditemukan
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </x-table>
+            <div class="mt-4 lg:mt-6">
+                {{ $transactions->links('pagination::tailwind') }}
+            </div>
         </div>
     </div>
 </div>
