@@ -23,6 +23,11 @@ class ShowProgram extends Component
         $this->totalAmount = $this->program->totalTransactionAmount();
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function getTransactionsProperty()
     {
         return $this->program->transactions()
@@ -36,10 +41,5 @@ class ShowProgram extends Component
         return view('livewire.admin.programs.show-program', [
             'transactions' => $this->transactions
         ]);
-    }
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
     }
 }
