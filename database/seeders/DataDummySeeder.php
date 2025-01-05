@@ -47,6 +47,8 @@ class DataDummySeeder extends Seeder
                     'user_id' => $user->id,
                 ]);
 
+                $user->assignRole('user');
+
                 $randomPrograms = Program::inRandomOrder()->take(fake()->numberBetween(1, 5))->get();
 
                 $user->programs()->attach($randomPrograms->pluck('id')->toArray(), [

@@ -9,8 +9,14 @@
                 <x-input wire:model="search" id="search" name="search" type="text" placeholder="Cari program" />
             </div>
             <div class="flex items-center gap-4 mt-4 border-b h-14 lg:border-none lg:mt-0">
-                <button class="text-sm border-b border-black h-14">Terbaru</button>
-                <button class="text-sm text-gray-600 h-14">Diikuti</button>
+                <button wire:click="setFilter('latest')"
+                    class="text-sm h-14 {{ $filter === 'latest' ? 'border-b border-black' : 'text-gray-600' }}">
+                    Terbaru
+                </button>
+                <button wire:click="setFilter('followed')"
+                    class="text-sm h-14 {{ $filter === 'followed' ? 'border-b border-black' : 'text-gray-600' }}">
+                    Diikuti
+                </button>
             </div>
         </div>
     </div>
@@ -28,7 +34,13 @@
                     </div>
                 </a>
             @empty
+                <div class="col-span-4 py-8 text-center">
+                    <p class="text-gray-500">Tidak ada program yang ditemukan</p>
+                </div>
             @endforelse
+        </div>
+        <div class="mt-4">
+            {{ $programs->links() }}
         </div>
     </div>
 </div>
