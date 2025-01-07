@@ -42,6 +42,13 @@ class ShowInvestment extends Component
         $this->dispatch('close-modal', 'edit-investment');
     }
 
+    public function delete(Investment $investment): void
+    {
+        $investment->delete();
+
+        $this->redirect(route('admin.investment.index'), navigate: true);
+    }
+
     public function render()
     {
         return view('livewire.admin.investments.show-investment', [

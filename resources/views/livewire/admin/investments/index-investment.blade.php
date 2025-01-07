@@ -42,10 +42,6 @@
                     class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md"
                     href="{{ route('admin.investment.show', $item->id) }}">
                     <h2 class="font-medium leading-7">{{ $item->name }}</h2>
-                    <div class="inline-flex items-center justify-between w-full">
-                        <p class="text-sm font-medium">Terkumpul</p>
-                        <p class="text-sm">Rp1.000.000.000,00</p>
-                    </div>
                 </a>
             @empty
                 <div class="col-span-3 text-center">
