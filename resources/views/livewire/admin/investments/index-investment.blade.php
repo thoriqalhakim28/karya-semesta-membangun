@@ -33,11 +33,13 @@
     </div>
     <div class="p-4 mt-4 border rounded-lg lg:mt-6 lg:p-6">
         <div class="items-center justify-between lg:flex">
-            <x-input type="search" placeholder="Cari pengguna..." class="lg:w-96" />
+            <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari program..."
+                class="lg:w-96" />
         </div>
         <div class="grid gap-6 mt-4 lg:grid-cols-3 lg:mt-6">
             @forelse ($investments as $item)
-                <a class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md"
+                <a wire:key="investment-{{ $item->id }}"
+                    class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md"
                     href="{{ route('admin.investment.show', $item->id) }}">
                     <h2 class="font-medium leading-7">{{ $item->name }}</h2>
                     <div class="inline-flex items-center justify-between w-full">
@@ -46,7 +48,14 @@
                     </div>
                 </a>
             @empty
-                <p class="text-sm text-gray-600">Tidak ada investasi</p>
+                <div class="col-span-3 text-center">
+                    @if ($search)
+                        <p class="text-sm text-gray-600">Tidak ada jenis investasi yang sesuai dengan pencarian
+                            "{{ $search }}"</p>
+                    @else
+                        <p class="text-sm text-gray-600">Tidak ada jenis investasi</p>
+                    @endif
+                </div>
             @endforelse
         </div>
     </div>
