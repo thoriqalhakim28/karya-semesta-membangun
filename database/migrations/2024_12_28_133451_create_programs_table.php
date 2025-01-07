@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->decimal('target', 10, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

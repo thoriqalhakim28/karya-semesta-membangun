@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('content');
             $table->enum('status', ['published', 'draft'])->default('draft');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
