@@ -10,6 +10,8 @@ use App\Models\UserFamily;
 use App\Models\Transaction;
 use App\Models\UserAddress;
 use App\Models\UserContact;
+use App\Models\UserInvestment;
+use App\Models\UserProgram;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -51,12 +53,14 @@ class DataDummySeeder extends Seeder
 
                 $randomPrograms = Program::inRandomOrder()->take(fake()->numberBetween(1, 5))->get();
 
-                $user->programs()->attach($randomPrograms->pluck('id')->toArray(), [
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-
                 foreach ($randomPrograms as $program) {
+                    UserProgram::create([
+                        'user_id' => $user->id,
+                        'program_id' => $program->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+
                     Transaction::create([
                         'user_id' => $user->id,
                         'transactionable_id' => $program->id,
@@ -72,12 +76,14 @@ class DataDummySeeder extends Seeder
                     ->take(fake()->numberBetween(1, 3))
                     ->get();
 
-                $user->investments()->attach($randomInvestments->pluck('id')->toArray(), [
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-
                 foreach ($randomInvestments as $investment) {
+                    UserInvestment::create([
+                        'user_id' => $user->id,
+                        'investment_id' => $investment->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+
                     Transaction::create([
                         'user_id' => $user->id,
                         'transactionable_id' => $investment->id,
