@@ -8,7 +8,8 @@
             <x-link variant="button" href="{{ route('admin.program.edit', $program->id) }}">
                 Edit program
             </x-link>
-            <x-button variant="destructive" x-on:click="confirm('Apakah anda yakin ingin menghapus program ini?')">
+            <x-button wire:click="delete('{{ $program->id }}')" variant="destructive"
+                x-on:click="confirm('Apakah anda yakin ingin menghapus program ini?')">
                 Hapus program
             </x-button>
         </div>

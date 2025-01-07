@@ -36,6 +36,13 @@ class ShowProgram extends Component
             ->paginate(10);
     }
 
+    public function delete(Program $program): void
+    {
+        $program->delete();
+
+        $this->redirect(route('admin.program.index'), navigate: true);
+    }
+
     public function render()
     {
         return view('livewire.admin.programs.show-program', [
