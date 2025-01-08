@@ -6,11 +6,18 @@
     <div class="mt-4 lg:mt-6">
         <div class="items-center gap-12 border-b lg:h-14 lg:flex">
             <div>
-                <x-input wire:model="search" id="search" name="search" type="text" placeholder="Cari program" />
+                <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari program..."
+                    class="lg:w-96" />
             </div>
             <div class="flex items-center gap-4 mt-4 border-b h-14 lg:border-none lg:mt-0">
-                <button class="text-sm border-b border-black h-14">Terbaru</button>
-                <button class="text-sm text-gray-600 h-14">Diikuti</button>
+                <button wire:click="setFilter('latest')"
+                    class="text-sm h-14 {{ $filter === 'latest' ? 'border-b border-black' : 'text-gray-600' }}">
+                    Terbaru
+                </button>
+                <button wire:click="setFilter('followed')"
+                    class="text-sm h-14 {{ $filter === 'followed' ? 'border-b border-black' : 'text-gray-600' }}">
+                    Diikuti
+                </button>
             </div>
         </div>
     </div>
@@ -22,6 +29,14 @@
                     <h2 class="font-medium leading-7">{{ $item->name }}</h2>
                 </a>
             @empty
+                <div class="col-span-4 text-center">
+                    @if ($search)
+                        <p class="text-sm text-gray-600">Tidak ada program yang sesuai dengan pencarian
+                            "{{ $search }}"</p>
+                    @else
+                        <p class="text-sm text-gray-600">Tidak ada program</p>
+                    @endif
+                </div>
             @endforelse
         </div>
     </div>
