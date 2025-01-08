@@ -12,8 +12,47 @@
     </div>
     <div class="p-4 mt-6 border rounded-lg lg:p-6">
         <div class="items-center justify-between lg:flex">
-            <div class="relative">
-                <x-input type="search" placeholder="Cari pengguna..." class="lg:w-96" />
+            <div class="items-center gap-6 lg:flex">
+                <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari pengguna..."
+                    class="lg:w-96" />
+                <x-dropdown>
+                    <div class="space-y-4">
+                        <div>
+                            <x-label for="start_date" value="Tanggal Mulai" />
+                            <x-input wire:model.live="startDate" id="start_date" type="date" />
+                        </div>
+                        <div>
+                            <x-label for="end_date" value="Tanggal Selesai" />
+                            <x-input wire:model.live="endDate" id="end_date" type="date" />
+                        </div>
+                        <div>
+                            <x-label for="transaction_type" value="Jenis Transaksi" />
+                            <x-select wire:model.live="transactionType" id="transaction_type">
+                                <option value="all">Semua Jenis</option>
+                                <option value="personal">Personal</option>
+                                <option value="loyalty">Loyalty</option>
+                            </x-select>
+                        </div>
+                        <div>
+                            <x-label for="transactionable_type" value="Sumber Transaksi" />
+                            <x-select wire:model.live="transactionableType" id="transactionable_type">
+                                <option value="all">Semua Sumber</option>
+                                <option value="program">Program</option>
+                                <option value="investment">Investasi</option>
+                            </x-select>
+                        </div>
+                        <div class="flex justify-end">
+                            <x-button wire:click="resetFilters" variant="outline" type="button">
+                                Reset Filter
+                            </x-button>
+                        </div>
+                    </div>
+                </x-dropdown>
+            </div>
+            <div class="mt-4 lg:mt-0">
+                <x-button wire:click="exportExcel" variant="outline" type="button">
+                    Export excel
+                </x-button>
             </div>
         </div>
         <div class="mt-4 lg:mt-6">
@@ -39,7 +78,7 @@
                         @forelse ($transactions as $item)
                             <tr>
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                    {{ Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
+                                    {{ Carbon\Carbon::parse($item->transaction_date)->locale('id')->translatedFormat('d F Y') }}
                                 </td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
                                     {{ $item->user->name }}</td>
@@ -55,13 +94,13 @@
                                     {{ 'Rp' . number_format($item->amount, 0, ',', '.') }}
                                 </td>
                                 <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
-                                    <x-button variant="ghost" wire:click="showTransactionDetail({{ $item->id }})">
+                                    <x-button variant="ghost" wire:click="showTransactionDetail('{{ $item->id }}')">
                                         <x-icons.view class="w-5 h-5 text-gray-600" />
                                     </x-button>
                                     <x-link variant="ghost" :href="route('admin.transaction.edit', $item->id)" wire:navigate>
                                         <x-icons.edit class="w-5 h-5 text-green-600" />
                                     </x-link>
-                                    <x-button variant="ghost" wire:click="delete({{ $item->id }})"
+                                    <x-button variant="ghost" wire:click="delete('{{ $item->id }}')"
                                         wire:confirm="Apakah anda yakin ingin menghapus transaksi ini?">
                                         <x-icons.delete class="w-5 h-5 text-red-600" />
                                     </x-button>
@@ -79,7 +118,7 @@
                 </table>
             </x-table>
             <div class="mt-4 lg:mt-6">
-                {{ $transactions->links('pagination::tailwind') }}
+                {{ $transactions->links() }}
             </div>
         </div>
     </div>

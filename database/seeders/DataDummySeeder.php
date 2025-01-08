@@ -65,7 +65,7 @@ class DataDummySeeder extends Seeder
                         'user_id' => $user->id,
                         'transactionable_id' => $program->id,
                         'transactionable_type' => Program::class,
-                        'transaction_date' => now(),
+                        'transaction_date' => fake()->dateTimeBetween('2024-01-01', '2024-12-31'),
                         'transaction_type' => fake()->randomElement(['loyalty', 'personal']),
                         'amount' => fake()->randomFloat(2, 10000, 1000000),
                         'payment_method' => fake()->randomElement(['bank_transfer', 'credit_card', 'e-wallet']),
@@ -88,7 +88,7 @@ class DataDummySeeder extends Seeder
                         'user_id' => $user->id,
                         'transactionable_id' => $investment->id,
                         'transactionable_type' => Investment::class,
-                        'transaction_date' => now(),
+                        'transaction_date' => fake()->dateTimeBetween('2024-01-01', '2024-12-31'),
                         'amount' => fake()->randomFloat(2, 10000, 1000000),
                         'payment_method' => fake()->randomElement(['bank_transfer', 'credit_card', 'e-wallet']),
                     ]);
