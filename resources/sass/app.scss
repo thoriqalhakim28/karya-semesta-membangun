@@ -104,6 +104,11 @@ select:invalid {
         @apply mb-4 leading-relaxed;
     }
 
+    // Paragraphs spacing
+    p + p {
+        @apply mt-6; // Menambahkan margin top yang lebih besar antara paragraf
+    }
+
     // Lists
     ul,
     ol {

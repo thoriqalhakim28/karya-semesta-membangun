@@ -11,7 +11,7 @@
     <div class="mt-4 lg:mt-6">
         <div class="grid gap-6 lg:grid-cols-3">
             @forelse ($blogs as $item)
-                <a href="" class="w-full">
+                <a href="{{ route('blog.show', $item->slug) }}" class="w-full">
                     <img src="{{ Storage::url($item->thumbnail) }}" alt="thumbnail" class="object-cover w-full h-48">
                     <h2 class="mt-2 text-xl font-semibold">{{ $item->title }}</h2>
                 </a>

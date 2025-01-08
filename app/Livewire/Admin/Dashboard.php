@@ -6,7 +6,6 @@ use App\Models\Investment;
 use App\Models\Program;
 use App\Models\Transaction;
 use App\Models\User;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
@@ -71,9 +70,6 @@ class Dashboard extends Component
 
     public function render()
     {
-
-        Debugbar::info($this->totalTransactions);
-
         return view('livewire.admin.dashboard', [
             'programs' => $this->programCount,
             'investments' => $this->investmentCount,

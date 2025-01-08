@@ -137,5 +137,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::prefix('blogs')->group(function () {
-    Route::get('/', BlogIndex::class)->name('blog.index');
+    Route::get('/', App\Livewire\Blogs\IndexBlog::class)->name('blog.index');
+    Route::get('/{slug}', App\Livewire\Blogs\ShowBlog::class)->name('blog.show');
 });
