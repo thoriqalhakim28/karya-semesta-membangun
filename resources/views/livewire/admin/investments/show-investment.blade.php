@@ -32,7 +32,7 @@
                 </x-modal>
             </div>
             <x-button wire:click="delete('{{ $investment->id }}')" variant="destructive"
-                x-on:click="confirm('Apakah anda yakin ingin menghapus investasi ini?')">
+                wire:confirm="Apakah anda yakin ingin menghapus investasi ini?">
                 Hapus jenis investasi
             </x-button>
         </div>

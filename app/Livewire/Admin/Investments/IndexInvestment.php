@@ -16,7 +16,7 @@ class IndexInvestment extends Component
 
     public CreateInvestmentForm $form;
 
-    #[Url(history: true)]
+    #[Url(as: 'q')]
     public $search = '';
 
     public function submit()

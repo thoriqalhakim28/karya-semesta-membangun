@@ -30,12 +30,7 @@
                 </a>
             @empty
                 <div class="col-span-4 text-center">
-                    @if ($search)
-                        <p class="text-sm text-gray-600">Tidak ada program yang sesuai dengan pencarian
-                            "{{ $search }}"</p>
-                    @else
-                        <p class="text-sm text-gray-600">Tidak ada program</p>
-                    @endif
+                    <p class="text-sm font-medium text-gray-800">Tidak ada program</p>
                 </div>
             @endforelse
         </div>

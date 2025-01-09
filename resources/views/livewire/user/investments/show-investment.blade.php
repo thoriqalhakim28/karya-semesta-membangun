@@ -7,7 +7,7 @@
                     Minta untuk berhenti
                 </x-button>
             @else
-                <x-button wire:click="follow({{ $investment->id }})">
+                <x-button wire:click="follow('{{ $investment->id }}')">
                     Ikuti program
                 </x-button>
             @endif

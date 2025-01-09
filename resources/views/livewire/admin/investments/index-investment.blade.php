@@ -9,7 +9,7 @@
         <x-button class="mt-4 lg:mt-0" x-data="" x-on:click="$dispatch('open-modal', 'create-investment')">
             Tambah jenis investasi
         </x-button>
-        <x-modal name="create-investment">
+        <x-modal name="create-investment" focusable>
             <h1 class="text-2xl font-semibold">Tambah Jenis Investasi</h1>
             <p class="text-sm font-medium text-gray-600">Masukan informasi jenis investasi baru.</p>
             <div class="mt-4 lg:mt-6">
@@ -33,7 +33,7 @@
     </div>
     <div class="p-4 mt-4 border rounded-lg lg:mt-6 lg:p-6">
         <div class="items-center justify-between lg:flex">
-            <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari program..."
+            <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari jenis investasi..."
                 class="lg:w-96" />
         </div>
         <div class="grid gap-6 mt-4 lg:grid-cols-3 lg:mt-6">
@@ -45,12 +45,7 @@
                 </a>
             @empty
                 <div class="col-span-3 text-center">
-                    @if ($search)
-                        <p class="text-sm text-gray-600">Tidak ada jenis investasi yang sesuai dengan pencarian
-                            "{{ $search }}"</p>
-                    @else
-                        <p class="text-sm text-gray-600">Tidak ada jenis investasi</p>
-                    @endif
+                    <p class="text-sm font-medium text-gray-800">Tidak ada jenis investasi</p>
                 </div>
             @endforelse
         </div>
