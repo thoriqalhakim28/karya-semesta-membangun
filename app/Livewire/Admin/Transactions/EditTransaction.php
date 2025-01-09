@@ -19,7 +19,6 @@ class EditTransaction extends Component
     public $programs = [];
     public $investments = [];
 
-
     public function mount($id)
     {
         $transaction = Transaction::findOrFail($id);

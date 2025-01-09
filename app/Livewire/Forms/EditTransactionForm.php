@@ -55,11 +55,15 @@ class EditTransactionForm extends Form
             $this->id = $transaction->id;
             $this->date = $transaction->transaction_date;
             $this->user = $transaction->user_id;
-            $this->program = $transaction->transactionable_id;
-            $this->investment = $transaction->transactionable_id;
             $this->transactionType = $transaction->transaction_type;
             $this->amount = $transaction->amount;
             $this->payment = $transaction->payment_method;
+        }
+
+        if ($transaction->transactionable_type === Program::class) {
+            $this->program = $transaction->transactionable_id;
+        } elseif ($transaction->transactionable_type === Investment::class) {
+            $this->investment = $transaction->transactionable_id;
         }
     }
 

@@ -67,6 +67,9 @@
                     <x-label for="investment" value="Jenis Investasi" />
                     <x-select wire:model.lazy="form.investment" id="investment" name="investment" required>
                         <option value="" selected>Pilih jenis investasi</option>
+                        @foreach ($investments as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
                     </x-select>
                     @error('form.investment')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>

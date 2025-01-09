@@ -4,7 +4,6 @@
         Masukan informasi transaksi yang akan di rubah.
     </p>
     <div class="w-full mx-auto mt-6 lg:w-1/2">
-        @dump($form)
         <form wire:submit.prevent="submit">
             <div class="grid grid-cols-2 gap-4 lg:gap-6">
                 <label for="program" class="flex w-full p-3 text-sm bg-white border border-gray-200 rounded-lg">
@@ -68,6 +67,9 @@
                     <x-label for="investment" value="Jenis Investasi" />
                     <x-select wire:model.lazy="form.investment" id="investment" name="investment" required>
                         <option value="" selected>Pilih jenis investasi</option>
+                        @foreach ($investments as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
                     </x-select>
                     @error('form.investment')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>

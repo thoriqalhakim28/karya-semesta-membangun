@@ -13,46 +13,48 @@
     <div class="p-4 mt-6 border rounded-lg lg:p-6">
         <div class="items-center justify-between lg:flex">
             <div class="items-center gap-6 lg:flex">
-                <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari pengguna..."
-                    class="lg:w-96" />
+                <x-input wire:model.live.debounce.300ms="search" type="search"
+                    placeholder="Cari pengguna, program, atau jenis investasi..." class="lg:w-96" />
                 <x-dropdown>
-                    <div class="space-y-4">
-                        <div>
-                            <x-label for="start_date" value="Tanggal Mulai" />
-                            <x-input wire:model.live="startDate" id="start_date" type="date" />
+                    <x-slot name="trigger">
+                        <x-button type="button" variant="outline">
+                            Filter data
+                        </x-button>
+                    </x-slot>
+                    <x-slot name="content">
+                        <div class="space-y-4">
+                            <div>
+                                <x-label for="start_date" value="Tanggal Mulai" />
+                                <x-input wire:model.live="startDate" id="start_date" type="date" />
+                            </div>
+                            <div>
+                                <x-label for="end_date" value="Tanggal Selesai" />
+                                <x-input wire:model.live="endDate" id="end_date" type="date" />
+                            </div>
+                            <div>
+                                <x-label for="transaction_type" value="Jenis Transaksi" />
+                                <x-select wire:model.live="transactionType" id="transaction_type">
+                                    <option value="all">Semua Jenis</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="loyalty">Loyalty</option>
+                                </x-select>
+                            </div>
+                            <div>
+                                <x-label for="transactionable_type" value="Sumber Transaksi" />
+                                <x-select wire:model.live="transactionableType" id="transactionable_type">
+                                    <option value="all">Semua Sumber</option>
+                                    <option value="program">Program</option>
+                                    <option value="investment">Investasi</option>
+                                </x-select>
+                            </div>
+                            <div class="flex justify-end">
+                                <x-button wire:click="resetFilters" variant="outline" type="button">
+                                    Reset Filter
+                                </x-button>
+                            </div>
                         </div>
-                        <div>
-                            <x-label for="end_date" value="Tanggal Selesai" />
-                            <x-input wire:model.live="endDate" id="end_date" type="date" />
-                        </div>
-                        <div>
-                            <x-label for="transaction_type" value="Jenis Transaksi" />
-                            <x-select wire:model.live="transactionType" id="transaction_type">
-                                <option value="all">Semua Jenis</option>
-                                <option value="personal">Personal</option>
-                                <option value="loyalty">Loyalty</option>
-                            </x-select>
-                        </div>
-                        <div>
-                            <x-label for="transactionable_type" value="Sumber Transaksi" />
-                            <x-select wire:model.live="transactionableType" id="transactionable_type">
-                                <option value="all">Semua Sumber</option>
-                                <option value="program">Program</option>
-                                <option value="investment">Investasi</option>
-                            </x-select>
-                        </div>
-                        <div class="flex justify-end">
-                            <x-button wire:click="resetFilters" variant="outline" type="button">
-                                Reset Filter
-                            </x-button>
-                        </div>
-                    </div>
+                    </x-slot>
                 </x-dropdown>
-            </div>
-            <div class="mt-4 lg:mt-0">
-                <x-button wire:click="exportExcel" variant="outline" type="button">
-                    Export excel
-                </x-button>
             </div>
         </div>
         <div class="mt-4 lg:mt-6">

@@ -6,6 +6,7 @@ use App\Models\Investment;
 use App\Models\Program;
 use App\Models\Transaction;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -16,6 +17,8 @@ class IndexTransaction extends Component
 
     public $selectedTransaction = null;
     public $isModalOpen = false;
+
+    #[Url( as :'q')]
     public $search = '';
     public $startDate = '';
     public $endDate = '';
@@ -28,7 +31,7 @@ class IndexTransaction extends Component
         'startDate' => ['except' => ''],
         'endDate' => ['except' => ''],
         'transactionType' => ['except' => 'all'],
-        'transactionableType' => ['except' => 'all']
+        'transactionableType' => ['except' => 'all'],
     ];
 
     public function updatedSearch()
