@@ -7,15 +7,9 @@
         <a href="/" class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
             Beranda
         </a>
-        <a href="/" class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
-            Tentang kami
-        </a>
-        <a href="/" class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
-            Kontak
-        </a>
         <a href="{{ route('blog.index') }}"
             class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground" wire:navigate>
-            Blogs
+            Informasi
         </a>
     </div>
 
@@ -43,7 +37,43 @@
     @endif
 
     <div class="lg:hidden">
-        Menu
+        <x-button variant="ghost" x-data="" x-on:click="$dispatch('open-drawer', 'menu-mobile')">
+            <x-icons.menu class="w-5 h-5" />
+        </x-button>
+        <x-drawer name="menu-mobile" position="right" fosusable>
+            <div class="flex flex-col space-y-2">
+                <a href="/"
+                    class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
+                    Beranda
+                </a>
+                <a href="{{ route('blog.index') }}"
+                    class="px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground"
+                    wire:navigate>
+                    Informasi
+                </a>
+
+                @if (Route::has('login'))
+                    @auth
+                        @if (Auth::user()->hasRole('admin'))
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="inline-flex items-center px-3 text-sm font-medium rounded-md h-9 bg-primary text-primary-foreground hover:bg-primary/90">
+                                Dashboard
+                            </a>
+                        @else
+                            <a href="{{ route('user.dashboard') }}"
+                                class="inline-flex items-center px-3 text-sm font-medium rounded-md h-9 bg-primary text-primary-foreground hover:bg-primary/90">
+                                Dashboard
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="inline-flex items-center px-3 text-sm font-medium rounded-md h-9 bg-primary text-primary-foreground hover:bg-primary/90">
+                            Masuk
+                        </a>
+                    @endauth
+                @endif
+            </div>
+        </x-drawer>
     </div>
 </div>
 
