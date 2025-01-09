@@ -29,7 +29,7 @@
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                                 Nomor Telepon</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-end">
-                                Action</th>
+                                </th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">

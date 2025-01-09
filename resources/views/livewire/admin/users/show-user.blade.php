@@ -7,7 +7,7 @@
             </p>
         </div>
         <x-button class="mt-4 lg:mt-0" variant="destructive" wire:click="delete('{{ $user->id }}')"
-            x-on:click="confirm('Apakah anda yakin ingin menghapus pengguna ini?')">
+            wire:confirm="Apakah anda yakin ingin menghapus pengguna ini?">
             Hapus pengguna
         </x-button>
     </div>
