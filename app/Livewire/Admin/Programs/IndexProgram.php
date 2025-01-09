@@ -14,7 +14,7 @@ class IndexProgram extends Component
 
     use WithPagination;
 
-    #[Url(history: true)]
+    #[Url(as: 'q')]
     public $search = '';
 
     public function updatedSearch()

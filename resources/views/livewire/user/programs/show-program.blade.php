@@ -10,7 +10,7 @@
                     Minta untuk berhenti
                 </x-button>
             @else
-                <x-button wire:click="follow({{ $program->id }})">
+                <x-button wire:click="follow('{{ $program->id }}')">
                     Ikuti program
                 </x-button>
             @endif
@@ -81,7 +81,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3"
+                                        <td colspan="4"
                                             class="px-6 py-4 text-sm font-medium text-center text-gray-800 whitespace-nowrap">
                                             Transaksi tidak ditemukan
                                         </td>

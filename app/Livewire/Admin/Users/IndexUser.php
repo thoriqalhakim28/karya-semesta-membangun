@@ -22,13 +22,18 @@ class IndexUser extends Component
         $this->resetPage();
     }
 
+    public function getUsersProperty()
+    {
+        return User::role('user')->with('contact')->where(function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%')
+                ->orWhere('email', 'like', '%' . $this->search . '%');
+        })->paginate(10);
+    }
+
     public function render()
     {
         return view('livewire.admin.users.index-user')->with([
-            'users' => User::role('user')->with(['contact'])->where(function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%')
-                    ->orWhere('email', 'like', '%' . $this->search . '%');
-            })->paginate(10)
+            'users' => $this->users
         ]);
     }
 }

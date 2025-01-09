@@ -9,7 +9,7 @@
                 Edit program
             </x-link>
             <x-button wire:click="delete('{{ $program->id }}')" variant="destructive"
-                x-on:click="confirm('Apakah anda yakin ingin menghapus program ini?')">
+                wire:confirm="Apakah anda yakin ingin menghapus program ini?">
                 Hapus program
             </x-button>
         </div>
