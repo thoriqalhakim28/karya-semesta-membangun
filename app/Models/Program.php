@@ -20,6 +20,19 @@ class Program extends Model
         'target',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($model) {
+            $model->transactions()->delete();
+        });
+
+        static::forceDeleting(function ($model) {
+            $model->transactions()->forceDelete();
+        });
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_programs');
