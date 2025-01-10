@@ -111,7 +111,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                {{ 'Rp' . number_format($item->amount, 0, ',', '.') }}
+                                {{ $item->amount }}
                             </td>
                         </tr>
                     @empty

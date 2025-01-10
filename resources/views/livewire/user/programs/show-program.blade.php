@@ -22,7 +22,7 @@
                 <div class="p-4 bg-gray-100 rounded-t-lg">
                     <p class="text-lg font-semibold text-center">Target/orang</p>
                 </div>
-                <p class="p-4 text-center">{{ 'Rp' . number_format($program->target, 2, ',', '.') }}</p>
+                <p class="p-4 text-center">{{ $program->target }}</p>
             </div>
             @if ($isFollowed)
                 <div class="w-full border divide-y divide-gray-200 rounded-lg">
@@ -76,7 +76,7 @@
                                         <td class="px-6 py-2 text-sm text-gray-800 capitalize whitespace-nowrap">
                                             {{ $item->payment_method }}</td>
                                         <td class="px-6 py-2 text-sm text-gray-800 text-end whitespace-nowrap">
-                                            {{ 'Rp' . number_format($item->amount, 0, ',', '.') }}
+                                            {{ $item->amount }}
                                         </td>
                                     </tr>
                                 @empty
