@@ -13,7 +13,7 @@ class IndexBlog extends Component
 
     public function mount()
     {
-        $this->blogs = Blog::all();
+        $this->blogs = Blog::where('status', 'published')->get();
     }
 
     public function render()
