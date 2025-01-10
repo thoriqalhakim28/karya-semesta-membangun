@@ -43,8 +43,12 @@
                     </div>
                     <div class="mt-4">
                         <x-label for="Category" value="Kategori" />
-                        <x-input wire:model.lazy="form.category" id="category" name="category" type="text" required
-                            autofocus />
+                        <x-select wire:model.lazy="form.category" id="category" name="category" required>
+                            <option value="" selected>Pilih kategori</option>
+                            <option value="informasi">Informasi</option>
+                            <option value="artikel">Artikel</option>
+                            <option value="berita">Berita</option>
+                        </x-select>
                         @error('form.category')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -58,7 +62,7 @@
                             quill.on('text-change', function() {
                                 @this.set('form.content', quill.root.innerHTML);
                             });
-
+                            
                             // Initialize content if exists
                             if (@this.get('form.content')) {
                                 quill.root.innerHTML = @this.get('form.content');

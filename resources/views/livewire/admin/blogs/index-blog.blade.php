@@ -36,7 +36,7 @@
                             <tr>
                                 <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">
                                     {{ $item->title }}</td>
-                                <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
+                                <td class="px-6 py-2 text-sm text-gray-800 capitalize whitespace-nowrap">
                                     {{ $item->category }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
                                     <span
