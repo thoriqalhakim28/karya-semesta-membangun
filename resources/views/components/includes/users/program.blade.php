@@ -10,21 +10,27 @@
                 <p class="text-sm">{{ $item->description }}</p>
                 <div class="flex justify-between mt-2">
                     <p class="text-sm font-medium">Target</p>
-                    <p class="text-sm">{{ $item->target }}</p>
+                    <p class="text-sm">{{ 'Rp' . number_format($item->target, 2, ',', '.') }}</p>
                 </div>
                 <div class="flex justify-between">
                     <p class="text-sm font-medium">Terkumpul</p>
-                    <p class="text-sm">Rp1.000.000.000</p>
+                    <p class="text-sm">
+                        {{ 'Rp' . number_format($item->totalTransactionAmount(), 2, ',', '.') }}
+                    </p>
                 </div>
                 <div class="flex justify-between">
                     <p class="text-sm font-medium">Keterangan</p>
-                    <p class="text-sm">Rp1.000.000.000</p>
+                    <p
+                        class="text-sm {{ $item->totalTransactionAmount() - $item->target >= 0 ? 'text-green-600' : 'text-red-600' }}">
+                        {{ $item->totalTransactionAmount() - $item->target >= 0
+                            ? '+Rp' . number_format($item->totalTransactionAmount() - $item->target, 2, ',', '.')
+                            : '-Rp' . number_format(abs($item->totalTransactionAmount() - $item->target), 2, ',', '.') }}
+                    </p>
                 </div>
             </div>
         @empty
             <p class="col-span-2 font-semibold text-center">Tidak ada program</p>
         @endforelse
-
     </div>
 </div>
 

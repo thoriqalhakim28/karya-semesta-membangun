@@ -28,3 +28,4 @@ class ShowUser extends Component
         return view('livewire.admin.users.show-user');
     }
 }
+    
