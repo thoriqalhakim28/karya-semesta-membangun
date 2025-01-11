@@ -1,8 +1,7 @@
 <div class="max-w-3xl p-4 mx-auto lg:p-0">
     <div class="justify-between border-b lg:h-12 lg:flex">
-        <div>
-            <x-input wire:model="search" type="text" placeholder="Cari informasi, artikel, atau berita..."
-                class="w-96" />
+        <div class="w-full lg:w-1/2">
+            <x-input wire:model="search" type="text" placeholder="Cari informasi, artikel, atau berita..." />
         </div>
         <div class="flex items-center gap-4">
             <button class="h-12 text-sm border-b border-black">Semua</button>
@@ -14,7 +13,8 @@
     <div class="mt-4 lg:mt-6">
         @forelse ($blogs as $item)
             <div class="w-full h-48 gap-6 lg:flex">
-                <img src="{{ Storage::url($item->thumbnail) }}" alt="thumbnail" class="hidden object-cover h-48 lg:block w-60">
+                <img src="{{ Storage::url($item->thumbnail) }}" alt="thumbnail"
+                    class="hidden object-cover h-48 lg:block w-60">
                 <div class="flex flex-col justify-between h-full">
                     <h2 class="text-2xl font-semibold">{{ $item->title }}</h2>
                     <div class="text-sm text-justify line-clamp-4">

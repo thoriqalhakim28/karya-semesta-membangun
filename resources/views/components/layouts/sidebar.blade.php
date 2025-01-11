@@ -3,7 +3,7 @@
         <div class="flex items-center h-16 gap-2 border-b">
             <div class="w-12 h-12 rounded-lg bg-gradient-to-tr from-blue-200 to-blue-600"></div>
             <div class="flex flex-col">
-                <p class="text-2xl font-semibold leading-5 font-myFont">Dashboard</p>
+                <p class="text-2xl font-semibold leading-5 font-display">Dashboard</p>
                 <p class="text-xs font-medium text-gray-600">Karya Membangun Semesta</p>
             </div>
         </div>

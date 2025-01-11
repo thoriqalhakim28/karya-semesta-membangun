@@ -5,7 +5,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ["Plus Jakarta Sans"],
-                myFont: ["Bricolage Grotesque"],
+                display: ["Bricolage Grotesque"],
             },
             colors: {
                 border: "hsl(var(--border))",
