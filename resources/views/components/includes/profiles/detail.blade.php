@@ -20,7 +20,7 @@
         </div>
         <div>
             <p class="text-sm font-medium text-gray-600">Jenis kelamin</p>
-            <p class="font-semibold">{{ $user->detail->gender ?? '-' }}</p>
+            <p class="font-semibold capitalize">{{ $user->detail->gender ?? '-' }}</p>
         </div>
         <div>
             <p class="text-sm font-medium text-gray-600">Status pernikahan</p>

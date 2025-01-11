@@ -30,7 +30,7 @@
                     <div class="mt-4">
                         <div class="inline-flex items-center justify-between w-full">
                             <p class="text-sm font-medium">Target/orang</p>
-                            <p class="text-sm">{{ $item->target }}</p>
+                            <p class="text-sm">{{ 'Rp' . number_format($item->target, 2, ',', '.') }}</p>
                         </div>
                     </div>
                 </a>
