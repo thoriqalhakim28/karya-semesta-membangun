@@ -81,7 +81,7 @@
                                 <td class="px-6 py-2 text-sm text-gray-800 capitalize whitespace-nowrap">
                                     {{ $item->payment_method }}</td>
                                 <td class="px-6 py-2 text-sm text-gray-800 text-end whitespace-nowrap">
-                                    {{ $item->amount }}
+                                    {{ 'Rp' . number_format($item->amount, 2, ',', '.') }}
                                 </td>
                             </tr>
                         @empty
