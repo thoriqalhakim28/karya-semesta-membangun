@@ -93,7 +93,7 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-2 text-sm text-gray-800 whitespace-nowrap">
-                                    {{ $item->amount }}
+                                    {{ 'Rp' . number_format($item->amount, 2, ',', '.') }}
                                 </td>
                                 <td class="px-6 py-2 text-sm font-medium whitespace-nowrap text-end">
                                     <x-button variant="ghost" wire:click="showTransactionDetail('{{ $item->id }}')">
@@ -163,7 +163,7 @@
                 <div>
                     <p class="text-sm font-medium text-gray-600">Jumlah</p>
                     <p class="text-sm text-gray-800">
-                        {{ $selectedTransaction->amount }}
+                        {{ 'Rp' . number_format($selectedTransaction->amount, 2, ',', '.') . ',-' }}
                     </p>
                 </div>
                 <div>
