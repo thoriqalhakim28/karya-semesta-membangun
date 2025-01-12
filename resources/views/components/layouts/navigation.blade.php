@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-50 flex items-center justify-between h-16 px-4 lg:px-0">
+<div class="sticky top-0 z-50 flex items-center justify-between bg-white h-16 px-4 lg:px-0">
     <a href="/" class="inline-flex items-center gap-2 font-display" wire:navigate>
         <span class="text-xs font-semibold leading-3">Karya <br /> Semesta <br /> Membangun </span>
     </a>

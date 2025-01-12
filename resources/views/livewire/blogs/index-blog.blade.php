@@ -4,10 +4,14 @@
             <x-input wire:model="search" type="text" placeholder="Cari informasi, artikel, atau berita..." />
         </div>
         <div class="flex items-center gap-4">
-            <button class="h-12 text-sm border-b border-black">Semua</button>
-            <button class="h-12 text-sm">Informasi</button>
-            <button class="h-12 text-sm">Artikel</button>
-            <button class="h-12 text-sm">Berita</button>
+            <button wire:click="setFilter('all')"
+                class="h-12 text-sm {{ $filter === 'all' ? 'border-b border-black' : 'text-gray-600' }}">Semua</button>
+            <button wire:click="setFilter('informasi')"
+                class="h-12 text-sm {{ $filter === 'informasi' ? 'border-b border-black' : 'text-gray-600' }}">Informasi</button>
+            <button wire:click="setFilter('artikel')"
+                class="h-12 text-sm {{ $filter === 'artikel' ? 'border-b border-black' : 'text-gray-600' }}">Artikel</button>
+            <button wire:click="setFilter('berita')"
+                class="h-12 text-sm {{ $filter === 'berita' ? 'border-b border-black' : 'text-gray-600' }}">Berita</button>
         </div>
     </div>
     <div class="mt-4 lg:mt-6">
@@ -34,6 +38,7 @@
         @empty
             <div class="col-span-3 text-xl font-semibold text-center">Tidak ada blog</div>
         @endforelse
+        <div>{{ $blogs->links() }}</div>
     </div>
 </div>
 
