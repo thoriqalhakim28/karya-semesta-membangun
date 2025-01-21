@@ -1,7 +1,8 @@
 <div class="max-w-3xl p-4 mx-auto lg:p-0">
     <div class="justify-between border-b lg:h-12 lg:flex">
         <div class="w-full lg:w-1/2">
-            <x-input wire:model="search" type="text" placeholder="Cari informasi, artikel, atau berita..." />
+            <x-input wire:model.live.debounce.300ms="search" type="text"
+                placeholder="Cari informasi, artikel, atau berita..." />
         </div>
         <div class="flex items-center gap-4">
             <button wire:click="setFilter('all')"

@@ -72,6 +72,12 @@ select:invalid {
     }
 }
 
+@layer base {
+    body {
+        @apply text-sm bg-background text-foreground;
+    }
+}
+
 .blog-content ol {
     list-style-type: decimal;
     padding-left: 2rem;
