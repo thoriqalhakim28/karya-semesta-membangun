@@ -13,7 +13,8 @@ use App\Livewire\Admin\Programs\CreateProgram;
 use App\Livewire\Admin\Programs\EditProgram;
 use App\Livewire\Admin\Programs\IndexProgram;
 use App\Livewire\Admin\Programs\ShowProgram;
-use App\Livewire\Admin\Transactions\CreateTransaction;
+use App\Livewire\Admin\Transactions\CreateInvestmentTransaction;
+use App\Livewire\Admin\Transactions\CreateProgramTransaction;
 use App\Livewire\Admin\Transactions\EditTransaction;
 use App\Livewire\Admin\Transactions\IndexTransaction;
 use App\Livewire\Admin\Users\CreateUser;
@@ -25,7 +26,6 @@ use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
-use App\Livewire\BlogIndex;
 use App\Livewire\User\Dashboard as UserDashboard;
 use App\Livewire\User\Investments\IndexInvestment as UserIndexInvestment;
 use App\Livewire\User\Investments\ShowInvestment as UserShowInvestment;
@@ -105,7 +105,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             Route::prefix('transactions')->group(function () {
                 Route::get('/', IndexTransaction::class)->name('admin.transaction.index');
-                Route::get('/create', CreateTransaction::class)->name('admin.transaction.create');
+                Route::get('/create-program', CreateProgramTransaction::class)->name('admin.transaction.create-program');
+                Route::get('/create-investment', CreateInvestmentTransaction::class)->name('admin.transaction.create-investment');
                 Route::get('/{id}/edit', EditTransaction::class)->name('admin.transaction.edit');
             });
 

@@ -6,16 +6,30 @@
                 Daftar transaksi yang pernah dilakukan oleh pengguna di komunitas anda.
             </p>
         </div>
-        <x-link variant="button" :href="route('admin.transaction.create')" class="mt-4 lg:mt-0">
-            Tambah transaksi
-        </x-link>
+        <x-dropdown align="left" size="lg">
+            <x-slot name="trigger">
+                <x-button>
+                    <x-icons.add class="w-5 h-5 text-primary-foreground" />
+                </x-button>
+            </x-slot>
+            <x-slot name="content">
+                <div class="space-y-2">
+                    <x-link :href="route('admin.transaction.create-program')" variant="ghost" class="w-full">
+                        Tambah transaksi program
+                    </x-link>
+                    <x-link :href="route('admin.transaction.create-investment')" variant="ghost" class="w-full">
+                        Tambah transaksi investasi
+                    </x-link>
+                </div>
+            </x-slot>
+        </x-dropdown>
     </div>
     <div class="p-4 mt-6 border rounded-lg lg:p-6">
         <div class="items-center justify-between lg:flex">
             <div class="items-center gap-6 lg:flex">
                 <x-input wire:model.live.debounce.300ms="search" type="search"
                     placeholder="Cari pengguna, program, atau jenis investasi..." class="lg:w-96" />
-                <x-dropdown>
+                <x-dropdown align="left">
                     <x-slot name="trigger">
                         <x-button type="button" variant="outline">
                             Filter data
