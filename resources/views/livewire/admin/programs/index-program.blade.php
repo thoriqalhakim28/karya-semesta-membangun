@@ -25,11 +25,11 @@
                     <div class="mt-4 space-y-1">
                         <div class="inline-flex items-center justify-between w-full">
                             <p class="text-sm font-medium">Target/orang</p>
-                            <p class="text-sm">{{ 'Rp' . number_format($item->target, 2, ',', '.') }}</p>
+                            <p class="text-sm">{{ $item->target }}</p>
                         </div>
                         <div class="inline-flex items-center justify-between w-full">
                             <p class="text-sm font-medium">Terkumpul</p>
-                            <p class="text-sm">{{ 'Rp' . number_format($item->totalTransactionAmount(), 2, ',', '.') }}
+                            <p class="text-sm">{{ $item->totalTransactionAmount() }}
                             </p>
                         </div>
                     </div>

@@ -10,12 +10,12 @@
                 <p class="text-sm">{{ $item->description }}</p>
                 <div class="flex justify-between mt-2">
                     <p class="text-sm font-medium">Target</p>
-                    <p class="text-sm">{{ 'Rp' . number_format($item->target, 2, ',', '.') }}</p>
+                    <p class="text-sm">{{ $item->target }}</p>
                 </div>
                 <div class="flex justify-between">
                     <p class="text-sm font-medium">Terkumpul</p>
                     <p class="text-sm">
-                        {{ 'Rp' . number_format($item->totalTransactionAmount(), 2, ',', '.') }}
+                        {{ $item->totalTransactionAmount()}}
                     </p>
                 </div>
                 <div class="flex justify-between">

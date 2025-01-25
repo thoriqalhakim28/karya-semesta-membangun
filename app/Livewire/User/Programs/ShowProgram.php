@@ -45,7 +45,7 @@ class ShowProgram extends Component
     public function getDifferenceFormattedProperty()
     {
         $prefix = $this->difference >= 0 ? '+' : '-';
-        return $prefix . 'Rp' . number_format(abs($this->difference), 2, ',', '.');
+        return $prefix;
     }
 
     public function follow($id)

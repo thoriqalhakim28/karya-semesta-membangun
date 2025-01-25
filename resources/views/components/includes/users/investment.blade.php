@@ -9,7 +9,7 @@
                 <p class="font-semibold">{{ $item->name }}</p>
                 <div class="flex justify-between mt-2">
                     <p class="text-sm font-medium">Nilai investasi</p>
-                    <p class="text-sm">{{ 'Rp' . number_format($item->totalTransactionAmount(), 2, ',', '.') }}</p>
+                    <p class="text-sm">{{ $item->totalTransactionAmount() }}</p>
                 </div>
             </div>
         @empty
