@@ -1,20 +1,18 @@
 <?php
-
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Program;
 use App\Models\Investment;
-use App\Models\UserDetail;
-use App\Models\UserFamily;
+use App\Models\Program;
 use App\Models\Transaction;
+use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\UserContact;
+use App\Models\UserDetail;
+use App\Models\UserFamily;
 use App\Models\UserInvestment;
 use App\Models\UserProgram;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DataDummySeeder extends Seeder
 {
@@ -55,20 +53,20 @@ class DataDummySeeder extends Seeder
 
                 foreach ($randomPrograms as $program) {
                     UserProgram::create([
-                        'user_id' => $user->id,
+                        'user_id'    => $user->id,
                         'program_id' => $program->id,
                         'created_at' => now(),
                         'updated_at' => now(),
                     ]);
 
                     Transaction::create([
-                        'user_id' => $user->id,
-                        'transactionable_id' => $program->id,
+                        'user_id'              => $user->id,
+                        'transactionable_id'   => $program->id,
                         'transactionable_type' => Program::class,
-                        'transaction_date' => fake()->dateTimeBetween('2024-01-01', '2024-12-31'),
-                        'transaction_type' => fake()->randomElement(['loyalty', 'personal']),
-                        'amount' => fake()->randomFloat(2, 10000, 1000000),
-                        'payment_method' => fake()->randomElement(['bank_transfer', 'credit_card', 'e-wallet']),
+                        'transaction_date'     => fake()->dateTimeBetween('2024-01-01', '2025-12-31'),
+                        'transaction_type'     => fake()->randomElement(['loyalty', 'personal']),
+                        'amount'               => fake()->numberBetween(10, 100),
+                        'payment_method'       => fake()->randomElement(['bank_transfer', 'credit_card', 'e-wallet']),
                     ]);
                 }
 
@@ -78,19 +76,19 @@ class DataDummySeeder extends Seeder
 
                 foreach ($randomInvestments as $investment) {
                     UserInvestment::create([
-                        'user_id' => $user->id,
+                        'user_id'       => $user->id,
                         'investment_id' => $investment->id,
-                        'created_at' => now(),
-                        'updated_at' => now(),
+                        'created_at'    => now(),
+                        'updated_at'    => now(),
                     ]);
 
                     Transaction::create([
-                        'user_id' => $user->id,
-                        'transactionable_id' => $investment->id,
+                        'user_id'              => $user->id,
+                        'transactionable_id'   => $investment->id,
                         'transactionable_type' => Investment::class,
-                        'transaction_date' => fake()->dateTimeBetween('2024-01-01', '2024-12-31'),
-                        'amount' => fake()->randomFloat(2, 10000, 1000000),
-                        'payment_method' => fake()->randomElement(['bank_transfer', 'credit_card', 'e-wallet']),
+                        'transaction_date'     => fake()->dateTimeBetween('2024-01-01', '2025-12-31'),
+                        'amount'               => fake()->numberBetween(10, 100),
+                        'payment_method'       => fake()->randomElement(['bank_transfer', 'credit_card', 'e-wallet']),
                     ]);
                 }
             }

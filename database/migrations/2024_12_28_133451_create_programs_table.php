@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->longText('description');
-            $table->decimal('target', 10, 2);
+            $table->bigInteger('target');
             $table->timestamps();
             $table->softDeletes();
         });

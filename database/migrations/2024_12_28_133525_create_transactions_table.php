@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('transactionable_type');
             $table->date('transaction_date');
             $table->enum('transaction_type', ['personal', 'loyalty'])->nullable();
-            $table->decimal('amount', 15, 2);
+            $table->bigInteger('amount');
             $table->string('payment_method');
             $table->timestamps();
             $table->index(['transactionable_id', 'transactionable_type']);
