@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire\Admin\Transactions;
 
 use Livewire\Attributes\Layout;
