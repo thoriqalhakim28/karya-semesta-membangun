@@ -67,8 +67,6 @@ class CreateProgramTransaction extends Component
 
     public function render()
     {
-        Debugbar::info($this->form->data);
-
         return view('livewire.admin.transactions.create-program-transaction', [
             'users' => User::role('user')->get(),
         ]);
