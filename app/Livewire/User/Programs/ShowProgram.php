@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Livewire\User\Programs;
 
 use App\Models\Program;
 use App\Models\UserProgram;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -14,9 +12,9 @@ class ShowProgram extends Component
 {
     public $program;
     public bool $isFollowed = false;
-    public $totalAmount = 0;
+    public $totalAmount     = 0;
     public $userTotalAmount = 0;
-    public $difference = 0;
+    public $difference      = 0;
 
     public function mount($id)
     {
@@ -44,15 +42,15 @@ class ShowProgram extends Component
 
     public function getDifferenceFormattedProperty()
     {
-        $prefix = $this->difference >= 0 ? '+' : '-';
+        $prefix = $this->difference >= 0 ? '+ ' . $this->difference : '- ' . abs($this->difference);
         return $prefix;
     }
 
     public function follow($id)
     {
         UserProgram::create([
-            'user_id' =>  Auth::user()->id,
-            'program_id' => $id
+            'user_id'    => Auth::user()->id,
+            'program_id' => $id,
         ]);
 
         $this->isFollowed = true;
@@ -61,7 +59,7 @@ class ShowProgram extends Component
     public function render()
     {
         return view('livewire.user.programs.show-program', [
-            'transactions' => $this->transactions
+            'transactions' => $this->transactions,
         ]);
     }
 }

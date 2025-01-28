@@ -5,11 +5,7 @@
             <p class="text-sm font-medium text-gray-600">{{ $program->description }}</p>
         </div>
         <div class="mt-4 lg:mt-0">
-            @if ($isFollowed)
-                <x-button variant="destructive">
-                    Minta untuk berhenti
-                </x-button>
-            @else
+            @if (!$isFollowed)
                 <x-button wire:click="follow('{{ $program->id }}')">
                     Ikuti program
                 </x-button>
@@ -29,7 +25,7 @@
                     <div class="p-4 bg-gray-100 rounded-t-lg">
                         <p class="text-lg font-semibold text-center">Terkumpul</p>
                     </div>
-                    <p class="p-4 text-center">{{ $totalAmount }}</p>
+                    <p class="p-4 text-center">{{ $userTotalAmount }}</p>
                 </div>
                 <div class="w-full border divide-y divide-gray-200 rounded-lg">
                     <div class="p-4 bg-gray-100 rounded-t-lg">

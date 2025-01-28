@@ -2,11 +2,7 @@
     <div class="items-center justify-between lg:flex">
         <h1 class="text-2xl font-semibold leading-7">{{ $investment->name }}</h1>
         <div class="mt-4 lg:mt-0">
-            @if ($isFollowed)
-                <x-button variant="destructive">
-                    Minta untuk berhenti
-                </x-button>
-            @else
+            @if (!$isFollowed)
                 <x-button wire:click="follow('{{ $investment->id }}')">
                     Ikuti program
                 </x-button>
