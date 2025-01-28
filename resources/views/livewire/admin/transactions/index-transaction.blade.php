@@ -115,7 +115,7 @@
                                     </x-button>
                                     <x-link variant="ghost" :href="$item->transactionable_type == 'App\Models\Program'
                                         ? route('admin.transaction.edit-program', $item->id)
-                                        : ''" wire:navigate>
+                                        : route('admin.transaction.edit-investment', $item->id)" wire:navigate>
                                         <x-icons.edit class="w-5 h-5 text-green-600" />
                                     </x-link>
                                     <x-button variant="ghost" wire:click="delete('{{ $item->id }}')"
@@ -152,7 +152,7 @@
                 <div>
                     <p class="text-sm font-medium text-gray-600">Tanggal</p>
                     <p class="text-sm text-gray-800">
-                        {{ Carbon\Carbon::parse($selectedTransaction->created_at)->locale('id')->translatedFormat('d F Y') }}
+                        {{ Carbon\Carbon::parse($selectedTransaction->transaction_date)->locale('id')->translatedFormat('d F Y') }}
                     </p>
                 </div>
                 <div>

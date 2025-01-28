@@ -15,6 +15,7 @@ use App\Livewire\Admin\Programs\IndexProgram;
 use App\Livewire\Admin\Programs\ShowProgram;
 use App\Livewire\Admin\Transactions\CreateInvestmentTransaction;
 use App\Livewire\Admin\Transactions\CreateProgramTransaction;
+use App\Livewire\Admin\Transactions\EditInvestmentTransaction;
 use App\Livewire\Admin\Transactions\EditProgramTransactions;
 use App\Livewire\Admin\Transactions\IndexTransaction;
 use App\Livewire\Admin\Users\CreateUser;
@@ -108,6 +109,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/create-program', CreateProgramTransaction::class)->name('admin.transaction.create-program');
                 Route::get('/create-investment', CreateInvestmentTransaction::class)->name('admin.transaction.create-investment');
                 Route::get('/{id}/edit-program', EditProgramTransactions::class)->name('admin.transaction.edit-program');
+                Route::get('/{id}/edit-investment', EditInvestmentTransaction::class)->name('admin.transaction.edit-investment');
             });
 
             Route::prefix('blogs')->group(function () {

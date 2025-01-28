@@ -26,25 +26,14 @@
                     @enderror
                 </div>
                 <div>
-                    <x-label for="program" value="Program" />
-                    <x-select wire:model.lazy="form.program" id="program" name="program">
-                        <option value="" selected>Pilih program</option>
-                        @foreach ($programs as $item)
+                    <x-label for="investment" value="Investment" />
+                    <x-select wire:model.lazy="form.investment" id="investment" name="investment">
+                        <option value="" selected>Pilih investment</option>
+                        @foreach ($investments as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </x-select>
                     @error('form.program')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div>
-                    <x-label for="transaction_type" value="Jenis transaksi" />
-                    <x-select wire:model.lazy="form.type" id="transaction_type" name="transaction_type">
-                        <option value="" selected>Pilih jenis transaksi</option>
-                        <option value="loyalty" selected>Loyalty</option>
-                        <option value="personal" selected>Personal</option>
-                    </x-select>
-                    @error('form.type')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
