@@ -113,7 +113,9 @@
                                     <x-button variant="ghost" wire:click="showTransactionDetail('{{ $item->id }}')">
                                         <x-icons.view class="w-5 h-5 text-gray-600" />
                                     </x-button>
-                                    <x-link variant="ghost" :href="route('admin.transaction.edit', $item->id)" wire:navigate>
+                                    <x-link variant="ghost" :href="$item->transactionable_type == 'App\Models\Program'
+                                        ? route('admin.transaction.edit-program', $item->id)
+                                        : ''" wire:navigate>
                                         <x-icons.edit class="w-5 h-5 text-green-600" />
                                     </x-link>
                                     <x-button variant="ghost" wire:click="delete('{{ $item->id }}')"
