@@ -10,16 +10,16 @@
     ][$variant];
 
     $size = [
-        'default' => 'h-10 py-2 px-4',
-        'sm' => 'h-9 rounded-md px-3',
-        'lg' => 'h-11 rounded-md px-8',
+        'default' => 'h-10 py-2 px-4 text-sm',
+        'sm' => 'h-9 rounded-md px-3 text-sm',
+        'lg' => 'h-11 rounded-md px-8 text-lg',
     ][$size];
 @endphp
 
 <button
     {{ $attributes->merge([
         'class' =>
-            'inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ' .
+            'inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md  font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ' .
             $variant .
             ' ' .
             $size,

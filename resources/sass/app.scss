@@ -78,6 +78,81 @@ select:invalid {
     }
 }
 
+.hero {
+    background-color: #ffe6e6;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image:
+            radial-gradient(at 15% 29%, rgba(255, 230, 230, 0.8) 0%, transparent 60%),
+            radial-gradient(at 0% 79%, rgba(225, 175, 209, 0.7) 0%, transparent 50%),
+            radial-gradient(at 90% 78%, rgba(173, 136, 198, 0.6) 0%, transparent 40%),
+            radial-gradient(at 91% 11%, rgba(116, 105, 182, 0.5) 0%, transparent 30%);
+        animation: meshFlow 15s ease-in-out infinite alternate;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        backdrop-filter: blur(5px);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+}
+
+@keyframes meshFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+// Enhance text gradient
+.text-gradient {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(
+        135deg,
+        #400c5a 0%,
+        #250436 50%,
+        #400c5a 100%
+    );
+    background-size: 200% auto;
+    animation: textGradient 8s ease infinite;
+}
+
+@keyframes textGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .blog-content ol {
     list-style-type: decimal;
     padding-left: 2rem;
