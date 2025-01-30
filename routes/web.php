@@ -49,6 +49,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
+Route::get('/info', function () {
+    dd(phpinfo());
+});
+
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
         ->name('login');

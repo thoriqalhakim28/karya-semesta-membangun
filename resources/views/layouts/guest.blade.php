@@ -1,10 +1,10 @@
 @extends('layouts.base')
 
 @section('body')
-    <div class="max-w-5xl mx-auto">
+    <div class="relative">
         <x-layouts.navigation />
 
-        <div class="mt-4 lg:mt-6">
+        <div class="max-w-5xl mx-auto mt-0 lg:mt-28">
             @isset($slot)
                 {{ $slot }}
             @endisset

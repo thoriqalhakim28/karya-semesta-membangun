@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +16,7 @@ class Login extends Component
     public $remember = false;
 
     protected $rules = [
-        'email' => ['required', 'email'],
+        'email'    => ['required', 'email'],
         'password' => ['required'],
     ];
 
@@ -25,9 +24,8 @@ class Login extends Component
     {
         $this->validate();
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            $this->addError('email', trans('auth.failed'));
-
+        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+            session()->flash('error', trans('Email atau password salah'));
             return;
         }
 

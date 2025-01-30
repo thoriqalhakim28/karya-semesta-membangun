@@ -10,19 +10,20 @@
                     Stronger Together, <br>
                     Brighter Tomorrow!
                 </p>
-                <p class="text-[27px] font-semibold text-gray-600/80 backdrop-blur-sm px-4 py-2 rounded-lg">
+                <p class="text-[27px] font-semibold backdrop-blur-sm px-4 py-2 rounded-lg">
                     Karya Semesta Membangun
                 </p>
                 <a href="">
                     <x-button size="lg"
-                        class="transition-all duration-300 transform bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105">
+                        class="transition-all duration-300 transform hover:shadow-lg hover:shadow-primary-500/25 hover:scale-105">
                         Get Started
                     </x-button>
                 </a>
-                <p class="px-3 py-1 mt-4 text-sm text-gray-600 rounded backdrop-blur-sm">
+                <p class="px-3 py-1 mt-4 text-sm rounded backdrop-blur-sm">
                     Join us and be part of a community that makes a difference!
                 </p>
             </div>
         </div>
     </div>
 @endsection
+

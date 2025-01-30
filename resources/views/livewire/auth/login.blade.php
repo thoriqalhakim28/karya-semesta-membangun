@@ -6,6 +6,9 @@
         <p>Masukan email dan kata sandi untuk mengakses akun anda.</p>
     </div>
     <div class="mt-6">
+        @if (session()->has('error'))
+            <p class="text-destructive">{{ session('error') }}</p>
+        @endif
         <form wire:submit.prevent="authenticate">
             <div>
                 <x-label for="email" value="Email" />

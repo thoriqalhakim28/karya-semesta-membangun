@@ -4,15 +4,19 @@
         <a href="/" class="inline-flex items-center gap-2 font-display" wire:navigate>
             <span class="text-xs font-semibold leading-3">Karya <br /> Semesta <br /> Membangun </span>
         </a>
-
-        <div class="items-center hidden space-x-4 list-none lg:flex group">
+        <div class="hidden space-x-4 list-none lg:flex">
             <a href="/" class="px-3 py-2 font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
                 Beranda
             </a>
+            <a href="/" class="px-3 py-2 font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
+                Kontak
+            </a>
             <a href="{{ route('blog.index') }}"
                 class="px-3 py-2 font-medium rounded-md hover:bg-accent hover:text-accent-foreground" wire:navigate>
-                Informasi
+                Blog
             </a>
+        </div>
+        <div class="items-center hidden space-x-4 list-none lg:flex group">
             @if (Route::has('login'))
                 <div class="hidden lg:block">
                     @auth
