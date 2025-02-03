@@ -1,0 +1,39 @@
+<div>
+    <h1 class="text-2xl font-semibold leading-7">Program</h1>
+    <p class="text-sm font-medium text-gray-600">
+        Daftar program yang tersedia untuk anda.
+    </p>
+    <div class="mt-4 lg:mt-6">
+        <div class="items-center gap-12 border-b lg:h-14 lg:flex">
+            <div>
+                <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari program..."
+                    class="lg:w-96" />
+            </div>
+            <div class="flex items-center gap-4 mt-4 border-b h-14 lg:border-none lg:mt-0">
+                <button wire:click="setFilter('latest')"
+                    class="text-sm h-14 {{ $filter === 'latest' ? 'border-b border-black' : 'text-gray-600' }}">
+                    Terbaru
+                </button>
+                <button wire:click="setFilter('followed')"
+                    class="text-sm h-14 {{ $filter === 'followed' ? 'border-b border-black' : 'text-gray-600' }}">
+                    Diikuti
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 lg:mt-6">
+        <div class="grid gap-6 mt-4 lg:grid-cols-4 lg:mt-6">
+            @forelse ($investments as $item)
+                <a href="{{ route('user.investment.show', $item->id) }}"
+                    class="p-4 transition duration-300 ease-in-out border rounded-lg hover:shadow-md" wire:navigate>
+                    <h2 class="font-medium leading-7">{{ $item->name }}</h2>
+                </a>
+            @empty
+                <div class="col-span-4 text-center">
+                    <p class="text-sm font-medium text-gray-800">Tidak ada program</p>
+                </div>
+            @endforelse
+        </div>
+    </div>
+</div>
+
