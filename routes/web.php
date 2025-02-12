@@ -116,12 +116,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/{id}/edit-investment', EditInvestmentTransaction::class)->name('admin.transaction.edit-investment');
             });
 
-            Route::prefix('blogs')->group(function () {
-                Route::get('/', IndexBlog::class)->name('admin.blog.index');
-                Route::get('/create', CreateBlog::class)->name('admin.blog.create');
-                Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
-                Route::get('/{slug}/edit', EditBlog::class)->name('admin.blog.edit');
-            });
+            // Route::prefix('blogs')->group(function () {
+            //     Route::get('/', IndexBlog::class)->name('admin.blog.index');
+            //     Route::get('/create', CreateBlog::class)->name('admin.blog.create');
+            //     Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
+            //     Route::get('/{slug}/edit', EditBlog::class)->name('admin.blog.edit');
+            // });
         });
     });
 

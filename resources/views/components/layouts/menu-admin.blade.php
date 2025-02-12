@@ -21,10 +21,10 @@
             <x-icons.transaction class="w-5 h-5" />
             Transaksi
         </x-side-link>
-        <x-side-link :href="route('admin.blog.index')" :active="request()->routeIs('admin.blog.*')" wire:navigate>
+        {{-- <x-side-link :href="route('admin.blog.index')" :active="request()->routeIs('admin.blog.*')" wire:navigate>
             <x-icons.blog class="w-5 h-5" />
             Blog
-        </x-side-link>
+        </x-side-link> --}}
     </div>
 </div>
 
