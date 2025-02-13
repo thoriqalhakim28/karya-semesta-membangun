@@ -12,23 +12,23 @@
     ][$size];
 @endphp
 
-<div class="flex justify-center">
+<div class="flex">
     <div x-data="{
         open: false,
         toggle() {
             if (this.open) {
                 return this.close()
             }
-
+    
             this.$refs.button.focus()
-
+    
             this.open = true
         },
         close(focusAfter) {
             if (!this.open) return
-
+    
             this.open = false
-
+    
             focusAfter && focusAfter.focus()
         }
     }" x-on:keydown.escape.prevent.stop="close($refs.button)"

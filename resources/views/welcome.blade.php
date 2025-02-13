@@ -6,11 +6,11 @@
         <div class="relative z-10 max-w-5xl mx-auto">
             <div class="flex flex-col items-center justify-center min-h-screen space-y-6">
                 <p
-                    class="text-6xl font-bold transition duration-500 ease-in-out transform text-gradient font-display hover:scale-105">
+                    class="text-6xl font-bold text-center transition duration-500 ease-in-out transform text-gradient font-display hover:scale-105">
                     Stronger Together, <br>
                     Brighter Tomorrow!
                 </p>
-                <p class="text-[27px] font-semibold backdrop-blur-sm px-4 py-2 rounded-lg">
+                <p class="text-[27px] font-semibold backdrop-blur-sm px-4 py-2 rounded-lg text-center leading-7">
                     Karya Semesta Membangun
                 </p>
                 <a href="">
@@ -19,7 +19,7 @@
                         Get Started
                     </x-button>
                 </a>
-                <p class="px-3 py-1 mt-4 text-sm rounded backdrop-blur-sm">
+                <p class="px-12 py-1 mt-4 text-sm text-center rounded backdrop-blur-sm lg-px-0">
                     Join us and be part of a community that makes a difference!
                 </p>
             </div>

@@ -1,5 +1,5 @@
 <div>
-    <div class="flex items-center justify-between">
+    <div class="items-center justify-between lg:flex">
         <div>
             <h1 class="text-2xl font-semibold leading-7">Program</h1>
             <p class="text-sm font-medium text-gray-600">
