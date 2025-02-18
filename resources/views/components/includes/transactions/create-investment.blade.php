@@ -31,7 +31,7 @@
                 @endforeach
             @endif
         </x-select>
-        @error('form.data.transactions.' . $index . '.program')
+        @error('form.data.transactions.' . $index . '.investment')
             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
         @enderror
     </div>
