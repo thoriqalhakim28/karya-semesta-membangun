@@ -9,7 +9,7 @@
         <form wire:submit.prevent="updateEmail">
             <div class="items-center gap-4 lg:flex">
                 <div class="lg:w-1/2">
-                    <x-input wire:model.live="form.email" id="email" type="email" name="email" />
+                    <x-input wire:model.live.debounce.2s="form.email" id="email" type="email" name="email" />
                     @error('form.email')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror

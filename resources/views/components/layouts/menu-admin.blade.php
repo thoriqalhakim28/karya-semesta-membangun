@@ -26,5 +26,12 @@
             Blog
         </x-side-link> --}}
     </div>
+    <p class="mt-6 text-sm font-medium text-gray-600">Lainnya</p>
+    <div class="mt-2 space-y-2">
+        <x-side-link :href="route('admin.settings')" :active="request()->routeIs('admin.settings')" wire:navigate>
+            <x-icons.settings class="w-5 h-5" />
+            Pengaturan
+        </x-side-link>
+    </div>
 </div>
 

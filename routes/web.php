@@ -2,10 +2,6 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Livewire\Admin\Blogs\CreateBlog;
-use App\Livewire\Admin\Blogs\EditBlog;
-use App\Livewire\Admin\Blogs\IndexBlog;
-use App\Livewire\Admin\Blogs\ShowBlog;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Investments\IndexInvestment;
 use App\Livewire\Admin\Investments\ShowInvestment;
@@ -13,6 +9,7 @@ use App\Livewire\Admin\Programs\CreateProgram;
 use App\Livewire\Admin\Programs\EditProgram;
 use App\Livewire\Admin\Programs\IndexProgram;
 use App\Livewire\Admin\Programs\ShowProgram;
+use App\Livewire\Admin\Settings\IndexSetting;
 use App\Livewire\Admin\Transactions\CreateInvestmentTransaction;
 use App\Livewire\Admin\Transactions\CreateProgramTransaction;
 use App\Livewire\Admin\Transactions\EditInvestmentTransaction;
@@ -122,6 +119,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             //     Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
             //     Route::get('/{slug}/edit', EditBlog::class)->name('admin.blog.edit');
             // });
+
+            Route::prefix('settings')->group(function () {
+                Route::get('/', IndexSetting::class)->name('admin.settings');
+            });
         });
     });
 
