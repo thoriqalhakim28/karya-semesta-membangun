@@ -9,16 +9,6 @@
                 <x-input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari program..."
                     class="lg:w-96" />
             </div>
-            <div class="flex items-center gap-4 mt-4 border-b h-14 lg:border-none lg:mt-0">
-                <button wire:click="setFilter('latest')"
-                    class="text-sm h-14 {{ $filter === 'latest' ? 'border-b border-black' : 'text-gray-600' }}">
-                    Terbaru
-                </button>
-                <button wire:click="setFilter('followed')"
-                    class="text-sm h-14 {{ $filter === 'followed' ? 'border-b border-black' : 'text-gray-600' }}">
-                    Diikuti
-                </button>
-            </div>
         </div>
     </div>
     <div class="mt-4 lg:mt-6">

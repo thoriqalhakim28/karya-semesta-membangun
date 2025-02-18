@@ -28,7 +28,7 @@
             <div class="flex-1 p-6">
                 <div class="flex items-center justify-between">
                     <div class="space-y-2">
-                        <p class="text-sm font-medium text-gray-600">Program diikuti</p>
+                        <p class="text-sm font-medium text-gray-600">Program</p>
                         <p class="text-3xl font-semibold tracking-tighter">{{ $totalPrograms }}</p>
                     </div>
                     <div>
@@ -51,7 +51,7 @@
                     <x-icons.investment class="w-6 h-6 p-0.5 text-blue-600 bg-blue-100/50 rounded-xl" />
                 </div>
                 <p class="text-lg font-semibold tracking-tighter">
-                    {{ 'Rp ' . number_format($totalInvestments, 2, ',', '.') }}</p>
+                    {{ $totalInvestments }}</p>
             </div>
             <x-separator />
             <div class="flex items-center justify-center p-4">
