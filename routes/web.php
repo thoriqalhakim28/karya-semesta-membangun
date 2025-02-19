@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Livewire\Admin\Blogs\CreateBlog;
+use App\Livewire\Admin\Blogs\EditBlog;
+use App\Livewire\Admin\Blogs\IndexBlog;
+use App\Livewire\Admin\Blogs\ShowBlog;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Investments\IndexInvestment;
 use App\Livewire\Admin\Investments\ShowInvestment;
@@ -113,12 +117,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/{id}/edit-investment', EditInvestmentTransaction::class)->name('admin.transaction.edit-investment');
             });
 
-            // Route::prefix('blogs')->group(function () {
-            //     Route::get('/', IndexBlog::class)->name('admin.blog.index');
-            //     Route::get('/create', CreateBlog::class)->name('admin.blog.create');
-            //     Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
-            //     Route::get('/{slug}/edit', EditBlog::class)->name('admin.blog.edit');
-            // });
+            Route::prefix('blogs')->group(function () {
+                Route::get('/', IndexBlog::class)->name('admin.blog.index');
+                Route::get('/create', CreateBlog::class)->name('admin.blog.create');
+                Route::get('/{slug}', ShowBlog::class)->name('admin.blog.show');
+                Route::get('/{slug}/edit', EditBlog::class)->name('admin.blog.edit');
+            });
 
             Route::prefix('settings')->group(function () {
                 Route::get('/', IndexSetting::class)->name('admin.settings');

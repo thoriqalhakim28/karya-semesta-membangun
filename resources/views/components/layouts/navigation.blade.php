@@ -11,10 +11,10 @@
             {{-- <a href="/" class="px-3 py-2 font-medium rounded-md hover:bg-accent hover:text-accent-foreground">
                 Kontak
             </a> --}}
-            {{-- <a href="{{ route('blog.index') }}"
+            <a href="{{ route('blog.index') }}"
                 class="px-3 py-2 font-medium rounded-md hover:bg-accent hover:text-accent-foreground" wire:navigate>
                 Blog
-            </a> --}}
+            </a>
         </div>
         <div class="items-center hidden space-x-4 list-none lg:flex group">
             @if (Route::has('login'))
