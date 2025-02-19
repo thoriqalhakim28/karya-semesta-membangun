@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -17,7 +16,8 @@ class Blog extends Model
         'title',
         'slug',
         'category',
-        'thumbnail',
+        'url',
+        'public_id',
         'content',
         'status',
     ];

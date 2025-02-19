@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="max-w-2xl mx-auto mt-4 space-y-4 lg:mt-6">
-        <img src="{{ Storage::url($blog->thumbnail) }}" alt="thumbnail">
+        <x-cld-image public-id="{{ $blog->public_id }}" />
         <h1 class="text-4xl font-bold capitalize">{{ $blog->title }}</h1>
         <div class="blog-content">{!! $blog->content !!}</div>
     </div>

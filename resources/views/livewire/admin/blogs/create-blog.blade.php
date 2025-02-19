@@ -62,7 +62,7 @@
                             quill.on('text-change', function() {
                                 @this.set('form.content', quill.root.innerHTML);
                             });
-                            
+
                             // Initialize content if exists
                             if (@this.get('form.content')) {
                                 quill.root.innerHTML = @this.get('form.content');

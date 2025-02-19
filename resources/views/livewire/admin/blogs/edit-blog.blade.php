@@ -28,10 +28,11 @@
                             <div class="mt-4 lg:mt-6">
                                 <img src="{{ $form->thumbnail->temporaryUrl() }}" class="w-auto h-auto">
                             </div>
-                        @elseif ($form->storedThumbnail)
+                        @elseif ($form->url)
                             <div class="mt-4 lg:mt-6">
-                                <img src="{{ Storage::url($form->storedThumbnail) }}" alt="Preview"
-                                    class="w-auto h-auto">
+                                <x-cld-image public-id="{{ $form->publicId }}" />
+                                {{-- <img src="{{ Storage::url($form->storedThumbnail) }}" alt="Preview"
+                                    class="w-auto h-auto"> --}}
                             </div>
                         @endif
                     </div>
@@ -62,7 +63,7 @@
                             quill.on('text-change', function() {
                                 @this.set('form.content', quill.root.innerHTML);
                             });
-                            
+
                             // Initialize content if exists
                             if (@this.get('form.content')) {
                                 quill.root.innerHTML = @this.get('form.content');

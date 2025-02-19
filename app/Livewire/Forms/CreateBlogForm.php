@@ -1,18 +1,15 @@
 <?php
-
 namespace App\Livewire\Forms;
 
 use App\Models\Blog;
-use Livewire\Attributes\Validate;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class CreateBlogForm extends Form
 {
     #[Validate]
     public $thumbnail;
-
-    public $storedThumbnail;
 
     #[Validate]
     public $title = '';
@@ -30,22 +27,22 @@ class CreateBlogForm extends Form
     {
         return [
             'thumbnail' => 'image|mimes:jpeg,png,jpg',
-            'title' => 'required|string',
-            'category' => 'required|string',
-            'content' => 'required|string',
-            'status' => 'required|in:published,draft'
+            'title'     => 'required|string',
+            'category'  => 'required|string',
+            'content'   => 'required|string',
+            'status'    => 'required|in:published,draft',
         ];
     }
 
     protected function messages(): array
     {
         return [
-            'thumbnail.image' => 'Thumbnail harus berupa gambar.',
-            'thumbnail.mimes' => 'Thumbnail harus berupa gambar dengan ekstensi jpeg, png, atau jpg.',
-            'title.required' => 'Judul harus diisi.',
+            'thumbnail.image'   => 'Thumbnail harus berupa gambar.',
+            'thumbnail.mimes'   => 'Thumbnail harus berupa gambar dengan ekstensi jpeg, png, atau jpg.',
+            'title.required'    => 'Judul harus diisi.',
             'category.required' => 'Kategori harus diisi.',
-            'content.required' => 'Konten harus diisi.',
-            'status.required' => 'Status harus diisi.',
+            'content.required'  => 'Konten harus diisi.',
+            'status.required'   => 'Status harus diisi.',
         ];
     }
 
@@ -55,15 +52,21 @@ class CreateBlogForm extends Form
 
         $slug = Str::slug($this->title);
 
-        $this->storedThumbnail = $this->thumbnail->store('thumbnails', 'public');
+        $publicId = date('YmdHis') . '-' . Str::random(12);
+
+        $uploadedFileUrl = cloudinary()->upload($this->thumbnail->getRealPath(), [
+            'folder'    => 'blogs',
+            'public_id' => $publicId,
+        ])->getSecurePath();
 
         Blog::create([
-            'slug' => $slug,
-            'thumbnail' => $this->storedThumbnail,
-            'title' => $this->title,
-            'category' => $this->category,
-            'content' => $this->content,
-            'status' => $this->status
+            'slug'      => $slug,
+            'title'     => $this->title,
+            'category'  => $this->category,
+            'url'       => $uploadedFileUrl,
+            'public_id' => 'blogs/' . $publicId,
+            'content'   => $this->content,
+            'status'    => $this->status,
         ]);
     }
 }

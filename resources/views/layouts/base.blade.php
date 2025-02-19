@@ -20,6 +20,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
     @livewireScripts
+    @cloudinaryJS
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

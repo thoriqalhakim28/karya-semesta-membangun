@@ -60,8 +60,6 @@ class IndexBlog extends Component
 
     public function render()
     {
-        Debugbar::info($this->filteredBlogs);
-
         return view('livewire.blogs.index-blog', [
             'blogs' => $this->filteredBlogs,
         ]);

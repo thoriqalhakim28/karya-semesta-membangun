@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Livewire\Admin\Blogs;
 
 use App\Livewire\Forms\CreateBlogForm;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,7 +13,7 @@ class CreateBlog extends Component
 
     public CreateBlogForm $form;
 
-    public function submit(): void
+    public function submit()
     {
         $this->form->save();
 

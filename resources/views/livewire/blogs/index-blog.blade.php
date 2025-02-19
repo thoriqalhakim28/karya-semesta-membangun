@@ -18,15 +18,16 @@
     <div class="mt-4 lg:mt-6">
         @forelse ($blogs as $item)
             <div class="w-full h-48 gap-6 lg:flex">
-                <img src="{{ Storage::url($item->thumbnail) }}" alt="thumbnail"
-                    class="hidden object-cover h-48 lg:block w-60">
+                <div class="hidden lg:block">
+                    <x-cld-image public-id="{{ $item->public_id }}" class="object-cover h-48 w-60" />
+                </div>
                 <div class="flex flex-col justify-between h-full">
                     <h2 class="text-2xl font-semibold">{{ $item->title }}</h2>
                     <div class="text-sm text-justify line-clamp-4">
                         {{ strip_tags($item->content) }}
                     </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-sm text-gray-600">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 text-sm text-gray-600">
                             <x-badge
                                 class="{{ $item->category == 'artikel' ? 'bg-blue-100 text-blue-800 border-blue-800' : ($item->category == 'informasi' ? 'bg-green-100 text-green-800 border-green-800' : 'bg-yellow-100 text-yellow-800 border-yellow-800') }}">{{ $item->category }}</x-badge>
                             <span>{{ Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}</span>

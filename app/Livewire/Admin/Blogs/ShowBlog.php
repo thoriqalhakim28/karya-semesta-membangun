@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Livewire\Admin\Blogs;
 
 use App\Models\Blog;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
